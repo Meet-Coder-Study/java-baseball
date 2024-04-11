@@ -1,36 +1,36 @@
 package baseball.controller;
 
 import baseball.domain.BaseBallNumbers;
-import baseball.domain.Computer;
+import baseball.domain.Game;
 import baseball.domain.Number;
 import baseball.dto.CheckBallResponse;
 import baseball.dto.CheckBallsRequest;
 import baseball.factory.BaseBallNumberFactory;
 import baseball.generator.BaseBallNumberGenerator;
-import baseball.repository.ComputerRepository;
+import baseball.repository.GameRepository;
 
 public class BaseBallGameController {
     private static final int ALL_STRIKE_CONT = 3;
 
-    private final ComputerRepository computerRepository;
+    private final GameRepository gameRepository;
 
-    public BaseBallGameController(ComputerRepository computerRepository) {
-        this.computerRepository = computerRepository;
+    public BaseBallGameController(GameRepository gameRepository) {
+        this.gameRepository = gameRepository;
     }
 
-    public int computerStart(BaseBallNumberGenerator baseBallNumberGenerator) {
-        Computer computer = new Computer(baseBallNumberGenerator.generate());
+    public int gameStart(BaseBallNumberGenerator baseBallNumberGenerator) {
+        Game game = new Game(baseBallNumberGenerator.generate());
 
-        return computerRepository.insert(computer);
+        return gameRepository.insert(game);
     }
 
     public CheckBallResponse checkBalls(CheckBallsRequest checkBallsRequest) {
-        Computer computer = computerRepository.findById(checkBallsRequest.computerId())
+        Game game = gameRepository.findById(checkBallsRequest.gameId())
                 .orElseThrow(() -> new IllegalArgumentException("컴퓨터가 존재하지 않습니다."));
 
         BaseBallNumbers playerNumbers = getPlayerNumbers(checkBallsRequest);
 
-        if (computer.isSameNumbers(playerNumbers)) {
+        if (game.isSameNumbers(playerNumbers)) {
             return new CheckBallResponse(ALL_STRIKE_CONT, 0, false, true);
         }
 
@@ -38,9 +38,9 @@ public class BaseBallGameController {
         int strikeNumber = 0;
 
         for (Number number : playerNumbers.getNumbers()) {
-            if (computer.isStrike(number, playerNumbers.indexOf(number))) {
+            if (game.isStrike(number, playerNumbers.indexOf(number))) {
                 strikeNumber++;
-            } else if (computer.isBall(number)) {
+            } else if (game.isBall(number)) {
                 ballNumber++;
             }
         }

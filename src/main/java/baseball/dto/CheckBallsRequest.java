@@ -4,6 +4,6 @@ import java.util.List;
 
 public record CheckBallsRequest(
         List<Integer> userNumbers,
-        int computerId
+        int gameId
 ) {
 }
