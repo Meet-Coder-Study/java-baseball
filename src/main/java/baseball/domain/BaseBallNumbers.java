@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class BaseBallNumbers {
-    private static final int TOTAL_COUNT = 3;
+    public static final int TOTAL_COUNT = 3;
 
     private final List<Number> numbers;
 

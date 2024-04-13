@@ -1,8 +1,8 @@
 package baseball.controller;
 
 import baseball.domain.Number;
-import baseball.dto.CheckBallRequest;
 import baseball.dto.CheckBallResponse;
+import baseball.dto.CheckBallsRequest;
 import baseball.repository.ComputerRepository;
 import baseball.repository.ComputerRepositoryImpl;
 import org.junit.jupiter.api.DisplayName;
@@ -33,7 +33,7 @@ class BaseBallGameControllerTest {
         int computerId = baseBallGameController.computerStart(() -> List.of(
                 new Number(1), new Number(2), new Number(3)));
 
-        CheckBallResponse checkBallDto = baseBallGameController.checkBall(new CheckBallRequest(List.of(1, 3, 5), computerId));
+        CheckBallResponse checkBallDto = baseBallGameController.checkBalls(new CheckBallsRequest(List.of(1, 3, 5), computerId));
 
         assertThat(checkBallDto.strikeCont()).isEqualTo(1);
         assertThat(checkBallDto.ballCont()).isEqualTo(1);
@@ -47,7 +47,7 @@ class BaseBallGameControllerTest {
         int computerId = baseBallGameController.computerStart(() -> List.of(
                 new Number(1), new Number(2), new Number(3)));
 
-        CheckBallResponse checkBallDto = baseBallGameController.checkBall(new CheckBallRequest(List.of(4, 5, 6), computerId));
+        CheckBallResponse checkBallDto = baseBallGameController.checkBalls(new CheckBallsRequest(List.of(4, 5, 6), computerId));
 
         assertAll(() -> assertThat(checkBallDto.strikeCont()).isZero(),
                 () -> assertThat(checkBallDto.ballCont()).isZero(),
@@ -62,7 +62,7 @@ class BaseBallGameControllerTest {
         int computerId = baseBallGameController.computerStart(() -> List.of(
                 new Number(1), new Number(2), new Number(3)));
 
-        CheckBallResponse checkBallDto = baseBallGameController.checkBall(new CheckBallRequest(List.of(1, 2, 3), computerId));
+        CheckBallResponse checkBallDto = baseBallGameController.checkBalls(new CheckBallsRequest(List.of(1, 2, 3), computerId));
 
         assertAll(() -> assertThat(checkBallDto.strikeCont()).isEqualTo(3),
                 () -> assertThat(checkBallDto.ballCont()).isZero(),

@@ -2,8 +2,8 @@ package baseball;
 
 import baseball.controller.BaseBallGameController;
 import baseball.domain.Commend;
-import baseball.dto.CheckBallRequest;
 import baseball.dto.CheckBallResponse;
+import baseball.dto.CheckBallsRequest;
 import baseball.generator.BaseBallNumberGenerator;
 import baseball.generator.BaseBallNumberShuffleGenerator;
 import baseball.repository.ComputerRepositoryImpl;
@@ -43,8 +43,8 @@ public class GameApplication {
 
             while (isFinished) {
                 List<Integer> userNumbers = InputView.inputNumbers();
-                CheckBallRequest checkBallRequest = new CheckBallRequest(userNumbers, computerId);
-                CheckBallResponse checkBallDto = baseBallGameController.checkBall(checkBallRequest);
+                CheckBallsRequest checkBallsRequest = new CheckBallsRequest(userNumbers, computerId);
+                CheckBallResponse checkBallDto = baseBallGameController.checkBalls(checkBallsRequest);
                 OutputView.printResult(checkBallDto);
                 isFinished = !checkBallDto.isSuccess();
             }

@@ -16,7 +16,7 @@ public class ComputerRepositoryImpl implements ComputerRepository {
     }
 
     @Override
-    public Integer create(Computer computer) {
+    public Integer insert(Computer computer) {
         id++;
         COMPUTERS.put(id, computer);
 

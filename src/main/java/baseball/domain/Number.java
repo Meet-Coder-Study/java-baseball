@@ -3,8 +3,8 @@ package baseball.domain;
 import java.util.Objects;
 
 public class Number {
-    private static final int MIN_VALUE = 1;
-    private static final int MAX_VALUE = 9;
+    public static final int MIN_VALUE = 1;
+    public static final int MAX_VALUE = 9;
 
     private final int value;
 
@@ -25,6 +25,10 @@ public class Number {
         if (o == null || getClass() != o.getClass()) return false;
         Number number = (Number) o;
         return value == number.value;
+    }
+
+    public boolean equals(int value) {
+        return this.value == value;
     }
 
     @Override

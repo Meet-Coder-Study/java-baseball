@@ -17,7 +17,7 @@ class ComputerRepositoryImplTest {
     void findByIdTest() {
         Computer computer = new Computer(Arrays.asList(new Number(1), new Number(2), new Number(3)));
 
-        int computerId = computerRepository.create(computer);
+        int computerId = computerRepository.insert(computer);
 
         Computer findComputer = computerRepository.findById(computerId).get();
 
@@ -26,10 +26,10 @@ class ComputerRepositoryImplTest {
 
     @DisplayName("컴퓨터를 저장할수 있다.")
     @Test
-    void createTesT() {
+    void insertTest() {
         Computer computer = new Computer(Arrays.asList(new Number(1), new Number(2), new Number(3)));
 
-        Integer computerId = computerRepository.create(computer);
+        Integer computerId = computerRepository.insert(computer);
 
         assertThat(computerId).isNotNull();
     }

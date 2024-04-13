@@ -2,7 +2,7 @@ package baseball.dto;
 
 import java.util.List;
 
-public record CheckBallRequest(
+public record CheckBallsRequest(
         List<Integer> userNumbers,
         int computerId
 ) {

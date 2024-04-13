@@ -7,5 +7,5 @@ import java.util.Optional;
 public interface ComputerRepository {
     Optional<Computer> findById(Integer id);
 
-    Integer create(Computer computer);
+    Integer insert(Computer computer);
 }
