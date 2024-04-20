@@ -17,7 +17,7 @@ public class OutputView {
             return;
         }
 
-        System.out.println(checkBallDto.ballCont() + "볼 " + checkBallDto.strikeCont() + "스트라이크");
+        System.out.println(checkBallDto.ballCount() + "볼 " + checkBallDto.strikeCount() + "스트라이크");
         if (checkBallDto.isSuccess()) {
             System.out.println("3개의 숫자를 모두 맞히셨습니다.");
             System.out.println("-------게임 종료-------");

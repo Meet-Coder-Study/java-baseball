@@ -35,8 +35,8 @@ class BaseBallGameControllerTest {
 
         CheckBallResponse checkBallDto = baseBallGameController.checkBalls(new CheckBallsRequest(List.of(1, 3, 5), computerId));
 
-        assertThat(checkBallDto.strikeCont()).isEqualTo(1);
-        assertThat(checkBallDto.ballCont()).isEqualTo(1);
+        assertThat(checkBallDto.strikeCount()).isEqualTo(1);
+        assertThat(checkBallDto.ballCount()).isEqualTo(1);
         assertThat(checkBallDto.isNotting()).isFalse();
         assertThat(checkBallDto.isSuccess()).isFalse();
     }
@@ -49,8 +49,8 @@ class BaseBallGameControllerTest {
 
         CheckBallResponse checkBallDto = baseBallGameController.checkBalls(new CheckBallsRequest(List.of(4, 5, 6), computerId));
 
-        assertAll(() -> assertThat(checkBallDto.strikeCont()).isZero(),
-                () -> assertThat(checkBallDto.ballCont()).isZero(),
+        assertAll(() -> assertThat(checkBallDto.strikeCount()).isZero(),
+                () -> assertThat(checkBallDto.ballCount()).isZero(),
                 () -> assertThat(checkBallDto.isNotting()).isTrue(),
                 () -> assertThat(checkBallDto.isSuccess()).isFalse()
         );
@@ -64,8 +64,8 @@ class BaseBallGameControllerTest {
 
         CheckBallResponse checkBallDto = baseBallGameController.checkBalls(new CheckBallsRequest(List.of(1, 2, 3), computerId));
 
-        assertAll(() -> assertThat(checkBallDto.strikeCont()).isEqualTo(3),
-                () -> assertThat(checkBallDto.ballCont()).isZero(),
+        assertAll(() -> assertThat(checkBallDto.strikeCount()).isEqualTo(3),
+                () -> assertThat(checkBallDto.ballCount()).isZero(),
                 () -> assertThat(checkBallDto.isNotting()).isFalse(),
                 () -> assertThat(checkBallDto.isSuccess()).isTrue()
         );
