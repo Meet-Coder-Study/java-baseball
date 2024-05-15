@@ -1,16 +1,16 @@
-import Domain.Computer;
-import Domain.User;
-import Entity.Record;
-import Enums.Game;
+package com;
+
+import com.Domain.Command;
+import com.Domain.Computer;
+import com.Domain.User;
+import com.Entity.Record;
+import com.Enums.Game;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Application {
-
-    public static final String START = "1";
-    public static final String END = "9";
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -19,33 +19,31 @@ public class Application {
             while(Boolean.TRUE) {
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 9를 입력하세요.");
 
-                String inp = br.readLine();
+                String userInput = br.readLine();
 
-                if(inp.equals(END)) {
+                if(Command.isEndApplication(userInput)) {
                     System.out.println("어플리케이션이 종료되었습니다.");
                     break;
                 }
 
-                if(!inp.equals(START)) {
+                if(Command.isValidInput(userInput)) {
+                    System.out.println("1 또는 9만 입력 가능합니다.");
                     continue;
                 }
 
-                run();
+                run(br);
             }
         } catch (Exception e) {
-
-        } finally {
-            br.close();
+            e.printStackTrace();
         }
+
+        br.close();
     }
 
-    public static void run() throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
+    public static void run(BufferedReader br) throws IOException {
         try {
             Computer computer = new Computer();
-            System.out.println("컴퓨터가 숫자를 뽑았습니다.");
-            System.out.println(computer);
+            System.out.println("컴퓨터가 숫자를 뽑았습니다. " + computer);
 
             while(Boolean.TRUE) {
                 System.out.print("숫자를 입력해주세요, : ");
@@ -60,17 +58,8 @@ public class Application {
                     break;
                 }
             }
-
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 9를 입력하세요.");
-
-            if(br.readLine().equals(START)){
-                run();
-            }
-
         } catch (Exception e) {
-
-        } finally {
-            br.close();
+            e.printStackTrace();
         }
     }
 }

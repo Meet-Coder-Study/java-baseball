@@ -1,4 +1,4 @@
-package Domain;
+package com.Domain;
 
 import java.util.Arrays;
 import java.util.List;
@@ -28,11 +28,11 @@ public class User {
                               .collect(Collectors.toList());
     }
 
-    private boolean isThreeLetters(Character[] userNums) {
+    public boolean isThreeLetters(Character[] userNums) {
         return userNums.length == THREE_LETTERS;
     }
 
-    private boolean isAllDigits(Character[] userNums) {
+    public boolean isAllDigits(Character[] userNums) {
         for (char letter: userNums) {
             if(!Character.isDigit(letter)) {
                 return false;
@@ -41,15 +41,15 @@ public class User {
         return true;
     }
 
-    private boolean isDuplicated(Character[] userNums) {
+    public boolean isDuplicated(Character[] userNums) {
         return Arrays.stream(userNums)
                      .distinct()
                      .count() != THREE_LETTERS;
     }
 
-    private boolean isZeroInit(Character[] userNums) {
+    public boolean isZeroInit(Character[] userNums) {
         return Arrays.stream(userNums)
-                     .filter(e -> e == ZERO)
+                     .filter(e -> Character.getNumericValue(e) == ZERO)
                      .count() > ZERO;
     }
 

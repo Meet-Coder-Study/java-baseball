@@ -1,6 +1,6 @@
-package Entity;
+package com.Entity;
 
-import Enums.Game;
+import com.Enums.Game;
 
 public class Record {
 

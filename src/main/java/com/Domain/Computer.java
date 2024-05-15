@@ -1,6 +1,6 @@
-package Domain;
+package com.Domain;
 
-import Entity.Record;
+import com.Entity.Record;
 
 import java.util.Collections;
 import java.util.List;
@@ -30,7 +30,7 @@ public class Computer {
         return new Record(strike, ball);
     }
 
-    private int checkStrikes(List<Integer> userNums) {
+    public int checkStrikes(List<Integer> userNums) {
         int strikeCnt = 0;
 
         if(goal.get(FIRST_NUMBER).equals(userNums.get(FIRST_NUMBER))) strikeCnt++;
@@ -39,8 +39,8 @@ public class Computer {
 
         return strikeCnt;
     }
-    
-    private int checkBalls(List<Integer> userNums, int strikeCnt) {
+
+    public int checkBalls(List<Integer> userNums, int strikeCnt) {
         int ballCnt = 0;
 
         for(Integer userNum : userNums) {
@@ -54,6 +54,6 @@ public class Computer {
 
     @Override
     public String toString() {
-        return "ANSWER = " + goal.get(FIRST_NUMBER) + "" + goal.get(SECOND_NUMBER) + "" + goal.get(THIRD_NUMBER);
+        return "[ANSWER = " + goal.get(FIRST_NUMBER) + "" + goal.get(SECOND_NUMBER) + "" + goal.get(THIRD_NUMBER) + "]";
     }
 }
