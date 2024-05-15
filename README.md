@@ -1,4 +1,4 @@
-# 숫자야구게임을 만들면서 배우는 Java 애플리케이
+# 숫자야구게임을 만들면서 배우는 Java 애플리케이션
 
 - [스터디 Github](https://github.com/Meet-Coder-Study/java-baseball)
 - [모집폼](https://forms.gle/2hkHQZ5eLhBrCctCA)
