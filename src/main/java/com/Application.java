@@ -49,10 +49,10 @@ public class Application {
                 System.out.print("숫자를 입력해주세요, : ");
                 User user = new User(br.readLine());
 
-                Record result = computer.checkAnswer(user.getuserNums());
-                result.printResult();
+                Record record = computer.checkAnswer(user.getuserNums());
+                record.printResult();
 
-                if(Game.END.equals(result.getResult())) {
+                if(Game.END.equals(record.getResult())) {
                     System.out.println("3개의 숫자를 모두 맞히셨습니다.");
                     System.out.println("-------게임 종료-------");
                     break;

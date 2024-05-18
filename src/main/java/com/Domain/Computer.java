@@ -25,9 +25,8 @@ public class Computer {
 
     public Record checkAnswer(List<Integer> userNums) {
         int strike = checkStrikes(userNums);
-        int ball = checkBalls(userNums, strike);
 
-        return new Record(strike, ball);
+        return new Record(strike, checkBalls(userNums, strike));
     }
 
     public int checkStrikes(List<Integer> userNums) {
@@ -49,7 +48,7 @@ public class Computer {
             }
         }
 
-        return ballCnt -= strikeCnt;
+        return ballCnt - strikeCnt;
     }
 
     @Override
