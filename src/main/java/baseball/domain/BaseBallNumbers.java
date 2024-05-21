@@ -1,10 +1,11 @@
 package baseball.domain;
 
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
-public class BaseBallNumbers {
+public class BaseBallNumbers implements Iterable<Number> {
     public static final int TOTAL_COUNT = 3;
 
     private final List<Number> numbers;
@@ -25,10 +26,6 @@ public class BaseBallNumbers {
 
     public int indexOf(Number number) {
         return numbers.indexOf(number);
-    }
-
-    public List<Number> getNumbers() {
-        return Collections.unmodifiableList(numbers);
     }
 
     private boolean isTotalSize() {
@@ -64,5 +61,10 @@ public class BaseBallNumbers {
     @Override
     public int hashCode() {
         return Objects.hash(numbers);
+    }
+
+    @Override
+    public Iterator<Number> iterator() {
+        return numbers.iterator();
     }
 }

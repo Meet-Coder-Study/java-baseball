@@ -37,7 +37,7 @@ public class BaseBallGameController {
         int ballNumber = 0;
         int strikeNumber = 0;
 
-        for (Number number : playerNumbers.getNumbers()) {
+        for (Number number : playerNumbers) {
             if (game.isStrike(number, playerNumbers.indexOf(number))) {
                 strikeNumber++;
             } else if (game.isBall(number)) {
