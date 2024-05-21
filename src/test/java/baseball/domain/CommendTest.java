@@ -22,8 +22,8 @@ class CommendTest {
     @DisplayName("명령어 찾기 테스트")
     @ParameterizedTest
     @MethodSource("provideOfTestFixtures")
-    void ofTest(int value, Commend expected) {
-        Commend actual = Commend.of(value);
+    void ofTest(final int value, final Commend expected) {
+        final Commend actual = Commend.of(value);
 
         assertThat(actual).isEqualTo(expected);
     }

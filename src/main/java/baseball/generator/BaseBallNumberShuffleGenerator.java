@@ -12,8 +12,8 @@ public class BaseBallNumberShuffleGenerator implements BaseBallNumberGenerator {
 
     @Override
     public List<Number> generate() {
-        List<Number> numbers = BaseBallNumberFactory.getNumbers();
-        List<Number> pickNumbers = new ArrayList<>(numbers);
+        final List<Number> numbers = BaseBallNumberFactory.getNumbers();
+        final List<Number> pickNumbers = new ArrayList<>(numbers);
 
         Collections.shuffle(pickNumbers);
 

@@ -18,7 +18,7 @@ public class InputView {
 
     public static List<Integer> inputNumbers() {
         System.out.print("숫자를 입력해주세요 : ");
-        String inputNumbers = scanner.next();
+        final String inputNumbers = scanner.next();
 
         return Arrays.stream(inputNumbers.split(INPUT_DELIMITER))
                 .map(Integer::parseInt)

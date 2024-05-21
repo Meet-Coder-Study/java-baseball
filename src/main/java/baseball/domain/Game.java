@@ -4,20 +4,20 @@ import java.util.List;
 
 public class Game {
     private final BaseBallNumbers computerNumbers;
-
-    public Game(List<Number> numbers) {
+    
+    public Game(final List<Number> numbers) {
         this.computerNumbers = new BaseBallNumbers(numbers);
     }
 
-    public boolean isBall(Number number) {
+    public boolean isBall(final Number number) {
         return computerNumbers.isContains(number);
     }
 
-    public boolean isStrike(Number number, int index) {
+    public boolean isStrike(final Number number, final int index) {
         return computerNumbers.isSameIndexOf(number, index);
     }
 
-    public boolean isSameNumbers(BaseBallNumbers numbers) {
+    public boolean isSameNumbers(final BaseBallNumbers numbers) {
         return this.computerNumbers.equals(numbers);
     }
 }

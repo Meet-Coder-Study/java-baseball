@@ -1,6 +1,5 @@
 package baseball.domain;
 
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
@@ -9,22 +8,22 @@ public class BaseBallNumbers implements Iterable<Number> {
     public static final int TOTAL_COUNT = 3;
 
     private final List<Number> numbers;
-
-    public BaseBallNumbers(List<Number> numbers) {
+    
+    public BaseBallNumbers(final List<Number> numbers) {
         this.numbers = numbers;
         validateDuplicateNumbers();
         validateSize();
     }
 
-    public boolean isContains(Number number) {
+    public boolean isContains(final Number number) {
         return numbers.contains(number);
     }
 
-    public boolean isSameIndexOf(Number number, int index) {
+    public boolean isSameIndexOf(final Number number, final int index) {
         return numbers.get(index).equals(number);
     }
 
-    public int indexOf(Number number) {
+    public int indexOf(final Number number) {
         return numbers.indexOf(number);
     }
 
@@ -51,10 +50,10 @@ public class BaseBallNumbers implements Iterable<Number> {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        BaseBallNumbers that = (BaseBallNumbers) o;
+        final BaseBallNumbers that = (BaseBallNumbers) o;
         return Objects.equals(numbers, that.numbers);
     }
 

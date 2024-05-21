@@ -23,14 +23,14 @@ class BaseBallNumbersTest {
     @DisplayName("해당 Number가 포함되어 있다면 True다.")
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3})
-    void isContainsTrueTest(int number) {
+    void isContainsTrueTest(final int number) {
         assertThat(INCORRECT_BASE_BALL_NUMBERS.isContains(new Number(number))).isTrue();
     }
 
     @DisplayName("해당 Number가 포함되어 있지 않다면 False다.")
     @ParameterizedTest
     @ValueSource(ints = {4, 5, 6})
-    void isContainsFalseTest(int number) {
+    void isContainsFalseTest(final int number) {
         assertThat(INCORRECT_BASE_BALL_NUMBERS.isContains(new Number(number))).isFalse();
     }
 
@@ -49,7 +49,7 @@ class BaseBallNumbersTest {
     @DisplayName("해당 숫자의 인덱스를 조회할수 있다.")
     @ParameterizedTest
     @CsvSource(value = {"1, 0", "2, 1", "3, 2"}, delimiter = ',')
-    void indexOfTest(int number, int index) {
+    void indexOfTest(final int number, final int index) {
 
         assertThat(INCORRECT_BASE_BALL_NUMBERS.indexOf(new Number(number))).isEqualTo(index);
     }
@@ -57,7 +57,7 @@ class BaseBallNumbersTest {
     @DisplayName("중복된 값이 있으면 예외가 발생한다.")
     @Test
     void validateDuplicateNumbersExceptionTest() {
-        List<Number> numbers = List.of(new Number(1),
+        final List<Number> numbers = List.of(new Number(1),
                 new Number(2),
                 new Number(2));
         assertThatThrownBy(() -> new BaseBallNumbers(numbers)).isInstanceOf(IllegalArgumentException.class)
@@ -67,7 +67,7 @@ class BaseBallNumbersTest {
     @DisplayName("중복값이 없으면 예외가 발생하지 않는다.")
     @Test
     void validateDuplicateNumbersNoExceptionTest() {
-        List<Number> numbers = List.of(new Number(1),
+        final List<Number> numbers = List.of(new Number(1),
                 new Number(2),
                 new Number(3));
         assertDoesNotThrow(() -> new BaseBallNumbers(numbers));
@@ -76,7 +76,7 @@ class BaseBallNumbersTest {
     @DisplayName("number가 2개 이하가 들어가는 경우 에러가 발생한다.")
     @Test
     void validateSizeLessThanTwoExceptionTest() {
-        List<Number> numbers = List.of(new Number(1),
+        final List<Number> numbers = List.of(new Number(1),
                 new Number(2));
         assertThatThrownBy(() -> new BaseBallNumbers(numbers)).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("3개의 숫자를 입력해주세요.");
@@ -85,7 +85,7 @@ class BaseBallNumbersTest {
     @DisplayName("number가 4개 이상이 들어가는 경우 에러가 발생한다.")
     @Test
     void validateSizeMoreThanFourExceptionTest() {
-        List<Number> numbers = List.of(new Number(1),
+        final List<Number> numbers = List.of(new Number(1),
                 new Number(2),
                 new Number(3),
                 new Number(4));

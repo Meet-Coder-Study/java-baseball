@@ -11,12 +11,12 @@ public class GameRepositoryImpl implements GameRepository {
     private static Integer id = 0;
 
     @Override
-    public Optional<Game> findById(Integer id) {
+    public Optional<Game> findById(final Integer id) {
         return Optional.of(GAMES.get(id));
     }
 
     @Override
-    public Integer insert(Game game) {
+    public Integer insert(final Game game) {
         id++;
         GAMES.put(id, game);
 

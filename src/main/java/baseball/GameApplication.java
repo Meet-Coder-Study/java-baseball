@@ -16,18 +16,21 @@ public class GameApplication {
     private static final BaseBallNumberGenerator baseBallNumberGenerator = new BaseBallNumberShuffleGenerator();
     private static final BaseBallGameController baseBallGameController = new BaseBallGameController(new GameRepositoryImpl());
 
+    private GameApplication() {
+    }
+
     public static void run() {
         Commend commend = Commend.END;
         try {
             do {
                 commend = Commend.of(InputView.inputMenu());
-                int gameId = baseBallGameController.gameStart(baseBallNumberGenerator);
+                final int gameId = baseBallGameController.gameStart(baseBallNumberGenerator);
                 OutputView.printPickComputerNumbers();
                 gameInProgress(gameId);
             }
             while (commend != Commend.END);
             applicationEnd();
-        } catch (Exception e) {
+        } catch (final Exception e) {
             OutputView.printErrorMessage(e.getMessage());
             run();
         }
@@ -37,18 +40,18 @@ public class GameApplication {
         OutputView.printExitMessage();
     }
 
-    private static void gameInProgress(int gameId) {
+    private static void gameInProgress(final int gameId) {
         try {
             boolean isFinished = true;
 
             while (isFinished) {
-                List<Integer> userNumbers = InputView.inputNumbers();
-                CheckBallsRequest checkBallsRequest = new CheckBallsRequest(userNumbers, gameId);
-                CheckBallResponse checkBallDto = baseBallGameController.checkBalls(checkBallsRequest);
+                final List<Integer> userNumbers = InputView.inputNumbers();
+                final CheckBallsRequest checkBallsRequest = new CheckBallsRequest(userNumbers, gameId);
+                final CheckBallResponse checkBallDto = baseBallGameController.checkBalls(checkBallsRequest);
                 OutputView.printResult(checkBallDto);
                 isFinished = !checkBallDto.isSuccess();
             }
-        } catch (Exception e) {
+        } catch (final Exception e) {
             OutputView.printErrorMessage(e.getMessage());
             gameInProgress(gameId);
         }
