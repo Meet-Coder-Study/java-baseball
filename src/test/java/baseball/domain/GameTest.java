@@ -16,6 +16,7 @@ class GameTest {
                 new Number(3));
         final Game game = new Game(numbers);
         final Number number = new Number(1);
+        
         assertThat(game.isBall(number)).isTrue();
     }
 
@@ -27,6 +28,7 @@ class GameTest {
                 new Number(3));
         final Game game = new Game(numbers);
         final Number number = new Number(4);
+
         assertThat(game.isBall(number)).isFalse();
     }
 
@@ -38,6 +40,7 @@ class GameTest {
                 new Number(3));
         final Game game = new Game(numbers);
         final Number number = new Number(1);
+
         assertThat(game.isStrike(number, 0)).isTrue();
     }
 
@@ -49,6 +52,7 @@ class GameTest {
                 new Number(3));
         final Game game = new Game(numbers);
         final Number number = new Number(2);
+
         assertThat(game.isStrike(number, 0)).isFalse();
     }
 
@@ -60,6 +64,7 @@ class GameTest {
                 new Number(3));
         final Game game = new Game(numbers);
         final Number number = new Number(4);
+
         assertThat(game.isStrike(number, 0)).isFalse();
     }
 }

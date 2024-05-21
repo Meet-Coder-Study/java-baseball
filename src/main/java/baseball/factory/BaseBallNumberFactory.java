@@ -15,7 +15,7 @@ public class BaseBallNumberFactory {
 
     public static Number valueOf(final int value) {
         return numbers.stream()
-                .filter(number -> number.equals(value))
+                .filter(number -> number.sameValue(value))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("1부터 9까지의 숫자만 입력 가능합니다."));
     }

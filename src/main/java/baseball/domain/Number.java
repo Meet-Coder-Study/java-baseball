@@ -13,4 +13,8 @@ public record Number(int value) {
             throw new IllegalArgumentException("1부터 9까지의 숫자만 입력 가능합니다.");
         }
     }
+
+    public boolean sameValue(int value) {
+        return this.value == value;
+    }
 }

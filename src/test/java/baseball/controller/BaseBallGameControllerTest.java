@@ -5,6 +5,7 @@ import baseball.dto.CheckBallResponse;
 import baseball.dto.CheckBallsRequest;
 import baseball.repository.GameRepository;
 import baseball.repository.GameRepositoryImpl;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -15,8 +16,14 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 class BaseBallGameControllerTest {
 
-    private static final GameRepository gameRepository = new GameRepositoryImpl();
-    private static final BaseBallGameController baseBallGameController = new BaseBallGameController(gameRepository);
+    private GameRepository gameRepository;
+    private BaseBallGameController baseBallGameController;
+
+    @BeforeEach
+    void setUp() {
+        gameRepository = new GameRepositoryImpl();
+        baseBallGameController = new BaseBallGameController(gameRepository);
+    }
 
     @DisplayName("게임을 시작한다.")
     @Test
@@ -33,12 +40,15 @@ class BaseBallGameControllerTest {
         final int gameId = baseBallGameController.gameStart(() -> List.of(
                 new Number(1), new Number(2), new Number(3)));
 
-        final CheckBallResponse checkBallDto = baseBallGameController.checkBalls(new CheckBallsRequest(List.of(1, 3, 5), gameId));
+        final CheckBallResponse checkBallDto = baseBallGameController
+                .checkBalls(new CheckBallsRequest(List.of(1, 3, 5), gameId));
 
-        assertThat(checkBallDto.strikeCount()).isEqualTo(1);
-        assertThat(checkBallDto.ballCount()).isEqualTo(1);
-        assertThat(checkBallDto.isNotting()).isFalse();
-        assertThat(checkBallDto.isSuccess()).isFalse();
+        assertAll(
+                () -> assertThat(checkBallDto.strikeCount()).isEqualTo(1),
+                () -> assertThat(checkBallDto.ballCount()).isEqualTo(1),
+                () -> assertThat(checkBallDto.isNotting()).isFalse(),
+                () -> assertThat(checkBallDto.isSuccess()).isFalse()
+        );
     }
 
     @DisplayName("낫싱을 확인한다.")

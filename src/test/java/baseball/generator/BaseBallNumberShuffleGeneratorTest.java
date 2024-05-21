@@ -7,16 +7,19 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 class BaseBallNumberShuffleGeneratorTest {
     @DisplayName("중복되지 않는 3개의 숫자를 추출한다.")
     @Test
     void generateTest() {
         final BaseBallNumberShuffleGenerator baseBallNumberShuffleGenerator = new BaseBallNumberShuffleGenerator();
-        
+
         final List<Number> baseBallNumbers = baseBallNumberShuffleGenerator.generate();
 
-        assertThat(baseBallNumberShuffleGenerator.generate()).hasSize(3);
-        assertThat(baseBallNumbers).doesNotHaveDuplicates();
+        assertAll(
+                () -> assertThat(baseBallNumbers).hasSize(3),
+                () -> assertThat(baseBallNumbers).doesNotHaveDuplicates()
+        );
     }
 }

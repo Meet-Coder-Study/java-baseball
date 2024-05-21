@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 class GameRepositoryImplTest {
     private static final GameRepository GAME_REPOSITORY = new GameRepositoryImpl();
@@ -22,8 +23,9 @@ class GameRepositoryImplTest {
 
         final Optional<Game> findGame = GAME_REPOSITORY.findById(gameId);
 
-        assertThat(findGame).isPresent();
-        assertThat(findGame).contains(game);
+        assertAll(
+                () -> assertThat(findGame).contains(game)
+        );
     }
 
     @DisplayName("컴퓨터를 저장할수 있다.")
