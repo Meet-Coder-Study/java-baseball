@@ -1,10 +1,18 @@
 package meetcoder.study.core.command;
 
+import meetcoder.study.core.BaseballGame;
+
 public class PlayGameCommand implements Command {
+
+  private final BaseballGame game;
+
+  public PlayGameCommand(BaseballGame game) {
+    this.game = game;
+  }
 
   @Override
   public void excute() {
-    // TODO: 숫자 야구 게임 실행 로직 구현
+    game.play();
   }
 
 }

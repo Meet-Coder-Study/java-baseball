@@ -6,27 +6,27 @@ import meetcoder.study.core.command.Command;
 import meetcoder.study.core.command.CommandFactory;
 import meetcoder.study.core.command.ExitApplicationCommand;
 import meetcoder.study.core.command.PlayGameCommand;
-import meetcoder.study.view.InputView;
-import meetcoder.study.view.OutputView;
-import meetcoder.study.view.console.ConsoleInputView;
-import meetcoder.study.view.console.ConsoleOutputView;
+import meetcoder.study.service.RandomBallNumbersGenerator;
+import meetcoder.study.view.ConsoleInputView;
+import meetcoder.study.view.ConsoleOutputView;
 
 public class ConsoleBaseballApplication implements BaseballApplication {
 
-  private final InputView inputView;
-  private final OutputView outputView;
+  private final ConsoleInputView inputView;
+  private final ConsoleOutputView outputView;
+  private final CommandFactory commandFactory;
   private boolean isRunning;
 
   public ConsoleBaseballApplication() {
-    this.inputView = new ConsoleInputView(
-        new CommandFactory(
-            Map.of(
-                "1", new PlayGameCommand(),
-                "9", new ExitApplicationCommand(this)
-            )
+    this.inputView = new ConsoleInputView();
+    this.outputView = new ConsoleOutputView();
+    this.commandFactory = new CommandFactory(
+        Map.of(
+            "1", new PlayGameCommand(
+                new ConsoleBaseballGame(inputView, outputView, new RandomBallNumbersGenerator())),
+            "9", new ExitApplicationCommand(this)
         )
     );
-    this.outputView = new ConsoleOutputView();
   }
 
   @Override
@@ -46,7 +46,7 @@ public class ConsoleBaseballApplication implements BaseballApplication {
   private void processCommand() {
     try {
       outputView.displayManual();
-      Command command = inputView.getCommand();
+      Command command = inputView.getCommand(commandFactory);
       command.excute();
     } catch (Exception ex) {
       outputView.displayError(ex);
