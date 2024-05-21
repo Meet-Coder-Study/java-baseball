@@ -1,10 +1,18 @@
 package meetcoder.study.core.command;
 
+import meetcoder.study.core.console.ConsoleBaseballApplication;
+
 public class ExitApplicationCommand implements Command {
+
+  private final ConsoleBaseballApplication application;
+
+  public ExitApplicationCommand(ConsoleBaseballApplication application) {
+    this.application = application;
+  }
 
   @Override
   public void excute() {
-    // TODO: 애플리케이션 종료 로직 구현
+    application.exit();
   }
 
 }

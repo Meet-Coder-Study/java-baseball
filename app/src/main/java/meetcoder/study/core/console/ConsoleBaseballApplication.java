@@ -1,9 +1,15 @@
 package meetcoder.study.core.console;
 
+import java.util.Map;
 import meetcoder.study.core.BaseballApplication;
 import meetcoder.study.core.command.Command;
+import meetcoder.study.core.command.CommandFactory;
+import meetcoder.study.core.command.ExitApplicationCommand;
+import meetcoder.study.core.command.PlayGameCommand;
 import meetcoder.study.view.InputView;
 import meetcoder.study.view.OutputView;
+import meetcoder.study.view.console.ConsoleInputView;
+import meetcoder.study.view.console.ConsoleOutputView;
 
 public class ConsoleBaseballApplication implements BaseballApplication {
 
@@ -11,15 +17,21 @@ public class ConsoleBaseballApplication implements BaseballApplication {
   private final OutputView outputView;
   private boolean isRunning;
 
-  public ConsoleBaseballApplication(InputView inputView, OutputView outputView) {
-    this.inputView = inputView;
-    this.outputView = outputView;
+  public ConsoleBaseballApplication() {
+    this.inputView = new ConsoleInputView(
+        new CommandFactory(
+            Map.of(
+                "1", new PlayGameCommand(),
+                "9", new ExitApplicationCommand(this)
+            )
+        )
+    );
+    this.outputView = new ConsoleOutputView();
   }
 
   @Override
   public void run() {
     isRunning = true;
-
     while (isRunning) {
       processCommand();
     }
