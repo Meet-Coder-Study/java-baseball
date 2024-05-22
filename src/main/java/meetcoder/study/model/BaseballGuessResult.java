@@ -10,41 +10,41 @@ public record BaseballGuessResult(
     int ballCount
 ) {
 
-  public boolean isAllStrike() {
-    return strikeCount == BALL_NUMBERS_SIZE;
-  }
-
-  public String summary() {
-    if (isNothing()) {
-      return NOTHING.getName();
+    public boolean isAllStrike() {
+        return strikeCount == BALL_NUMBERS_SIZE;
     }
 
-    StringBuilder sb = new StringBuilder();
-    if (hasBall()) {
-      sb.append(ballCount)
-          .append(BALL.getName())
-          .append(" ");
+    public String summary() {
+        if (isNothing()) {
+            return NOTHING.getName();
+        }
+
+        StringBuilder sb = new StringBuilder();
+        if (hasBall()) {
+            sb.append(ballCount)
+                .append(BALL.getName())
+                .append(" ");
+        }
+
+        if (hasStrike()) {
+            sb.append(strikeCount)
+                .append(STRIKE.getName());
+        }
+
+        return sb.toString()
+            .trim();
     }
 
-    if (hasStrike()) {
-      sb.append(strikeCount)
-          .append(STRIKE.getName());
+    private boolean isNothing() {
+        return strikeCount == 0 && ballCount == 0;
     }
 
-    return sb.toString()
-        .trim();
-  }
+    private boolean hasStrike() {
+        return strikeCount > 0;
+    }
 
-  private boolean isNothing() {
-    return strikeCount == 0 && ballCount == 0;
-  }
-
-  private boolean hasStrike() {
-    return strikeCount > 0;
-  }
-
-  private boolean hasBall() {
-    return ballCount > 0;
-  }
+    private boolean hasBall() {
+        return ballCount > 0;
+    }
 
 }

@@ -2,8 +2,8 @@ package meetcoder.study.core;
 
 public interface BaseballApplication {
 
-  void run();
+    void run();
 
-  void exit();
+    void exit();
 
 }

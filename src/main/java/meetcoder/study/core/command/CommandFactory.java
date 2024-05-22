@@ -5,18 +5,18 @@ import java.util.Map;
 
 public class CommandFactory {
 
-  private final Map<String, Command> commandMap;
+    private final Map<String, Command> commandMap;
 
-  public CommandFactory(Map<String, Command> commandMap) {
-    this.commandMap = new HashMap<>(commandMap);
-  }
-
-  public Command getCommand(String key) {
-    if (commandMap.containsKey(key)) {
-      return commandMap.get(key);
+    public CommandFactory(Map<String, Command> commandMap) {
+        this.commandMap = new HashMap<>(commandMap);
     }
 
-    throw new IllegalArgumentException("존재하지 않는 명령어입니다.");
-  }
+    public Command getCommand(String key) {
+        if (commandMap.containsKey(key)) {
+            return commandMap.get(key);
+        }
+
+        throw new IllegalArgumentException("존재하지 않는 명령어입니다.");
+    }
 
 }

@@ -9,35 +9,35 @@ import meetcoder.study.model.BallNumbers;
 
 public class ConsoleInputView {
 
-  private static final BufferedReader reader = new BufferedReader(
-      new InputStreamReader(System.in));
+    private static final BufferedReader reader = new BufferedReader(
+        new InputStreamReader(System.in));
 
-  public Command getCommand(CommandFactory commandFactory) {
-    return commandFactory.getCommand(readString());
-  }
-
-  public BallNumbers readBaseballNumber() {
-    return BallNumbers.of(readInts());
-  }
-
-  private String readString() {
-    try {
-      return reader.readLine();
-    } catch (Exception e) {
-      throw new IllegalArgumentException("입력값을 읽을 수 없습니다.");
+    public Command getCommand(CommandFactory commandFactory) {
+        return commandFactory.getCommand(readString());
     }
-  }
 
-  private List<Integer> readInts() {
-    try {
-      return readString().chars()
-          .boxed()
-          .map(Character::getNumericValue)
-          .toList();
-    } catch (Exception e) {
-      throw new IllegalArgumentException("숫자를 입력해주세요.");
+    public BallNumbers readBaseballNumber() {
+        return BallNumbers.of(readInts());
     }
-  }
+
+    private String readString() {
+        try {
+            return reader.readLine();
+        } catch (Exception e) {
+            throw new IllegalArgumentException("입력값을 읽을 수 없습니다.");
+        }
+    }
+
+    private List<Integer> readInts() {
+        try {
+            return readString().chars()
+                .boxed()
+                .map(Character::getNumericValue)
+                .toList();
+        } catch (Exception e) {
+            throw new IllegalArgumentException("숫자를 입력해주세요.");
+        }
+    }
 
 
 }

@@ -11,23 +11,23 @@ import meetcoder.study.model.BallNumbers;
 
 public class RandomBallNumbersGenerator implements BallNumbersGenerator {
 
-  @Override
-  public BallNumbers generate() {
-    List<Integer> numbers = createNumberRange(MIN_BALL_NUMBER, MAX_BALL_NUMBER);
-    Collections.shuffle(numbers);
+    @Override
+    public BallNumbers generate() {
+        List<Integer> numbers = createNumberRange(MIN_BALL_NUMBER, MAX_BALL_NUMBER);
+        Collections.shuffle(numbers);
 
-    return BallNumbers.of(
-        new ArrayList<>(numbers.subList(0, BALL_NUMBERS_SIZE)));
-  }
-
-  private List<Integer> createNumberRange(int min, int max) {
-    List<Integer> numbers = new ArrayList<>();
-
-    for (int i = min; i <= max; i++) {
-      numbers.add(i);
+        return BallNumbers.of(
+            new ArrayList<>(numbers.subList(0, BALL_NUMBERS_SIZE)));
     }
 
-    return numbers;
-  }
+    private List<Integer> createNumberRange(int min, int max) {
+        List<Integer> numbers = new ArrayList<>();
+
+        for (int i = min; i <= max; i++) {
+            numbers.add(i);
+        }
+
+        return numbers;
+    }
 
 }

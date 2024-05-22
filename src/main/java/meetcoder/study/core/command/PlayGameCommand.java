@@ -4,15 +4,15 @@ import meetcoder.study.core.BaseballGame;
 
 public class PlayGameCommand implements Command {
 
-  private final BaseballGame game;
+    private final BaseballGame game;
 
-  public PlayGameCommand(BaseballGame game) {
-    this.game = game;
-  }
+    public PlayGameCommand(BaseballGame game) {
+        this.game = game;
+    }
 
-  @Override
-  public void excute() {
-    game.play();
-  }
+    @Override
+    public void excute() {
+        game.play();
+    }
 
 }
