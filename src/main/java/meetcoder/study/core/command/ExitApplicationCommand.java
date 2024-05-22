@@ -1,12 +1,12 @@
 package meetcoder.study.core.command;
 
-import meetcoder.study.core.console.ConsoleBaseballApplication;
+import meetcoder.study.core.BaseballApplication;
 
 public class ExitApplicationCommand implements Command {
 
-    private final ConsoleBaseballApplication application;
+    private final BaseballApplication application;
 
-    public ExitApplicationCommand(ConsoleBaseballApplication application) {
+    public ExitApplicationCommand(BaseballApplication application) {
         this.application = application;
     }
 
