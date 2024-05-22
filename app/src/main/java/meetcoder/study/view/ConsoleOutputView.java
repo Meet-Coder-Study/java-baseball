@@ -20,6 +20,7 @@ public class ConsoleOutputView {
   }
 
   public void displayGoodbyeMessage() {
+    emptyLine();
     println(GOOD_BYE_MESSAGE);
   }
 
