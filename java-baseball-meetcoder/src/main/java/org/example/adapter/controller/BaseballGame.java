@@ -57,11 +57,11 @@ public class BaseballGame {
     private void process() {
         Answer answer = answerUsecase.generate();
         systemMessageHandler.printStartMessage();
-        runnable(answer);
+        userTry(answer);
         systemMessageHandler.printAnswerMessage();
     }
 
-    private void runnable(final Answer answer) {
+    private void userTry(final Answer answer) {
         Result result;
         do {
             systemMessageHandler.printInputMessage();
