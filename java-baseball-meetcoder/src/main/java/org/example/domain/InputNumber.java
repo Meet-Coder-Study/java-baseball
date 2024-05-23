@@ -32,7 +32,7 @@ public record InputNumber(
 
     private static boolean isInvalidDigit(final char ch) {
         if (!Character.isDigit(ch)) {
-            return false;
+            return true;
         }
         final int value = Character.getNumericValue(ch);
         return value < MIN_NUMBER || value > MAX_NUMBER;
