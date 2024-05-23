@@ -39,7 +39,7 @@ public class Result {
         return new Result(this.ball, newStrike);
     }
 
-    public boolean isBall(
+    public static boolean isBall(
         final Answer answer,
         final InputNumber inputNumber,
         final int index
@@ -50,7 +50,7 @@ public class Result {
         return !Objects.equals(computerNum, userNum) && computerValues.contains(userNum);
     }
 
-    public boolean isStrike(
+    public static boolean isStrike(
         final Answer answer,
         final InputNumber inputNumber,
         final int index

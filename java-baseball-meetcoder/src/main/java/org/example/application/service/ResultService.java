@@ -24,10 +24,10 @@ public class ResultService implements ResultUsecase {
         final InputNumber inputNumber,
         final int index
     ) {
-        if (result.isBall(answer, inputNumber, index)) {
+        if (Result.isBall(answer, inputNumber, index)) {
             return result.updateBall();
         }
-        if (result.isStrike(answer, inputNumber, index)) {
+        if (Result.isStrike(answer, inputNumber, index)) {
             return result.updateStrike();
         }
         return result;
