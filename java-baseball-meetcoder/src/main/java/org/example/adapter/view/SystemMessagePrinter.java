@@ -5,6 +5,8 @@ import org.example.domain.Result;
 
 public class SystemMessagePrinter implements SystemMessageHandler {
 
+    private static final String SPACE = " ";
+
     @Override
     public void printMenu() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 9를 입력하세요.");
@@ -17,13 +19,37 @@ public class SystemMessagePrinter implements SystemMessageHandler {
 
     @Override
     public void printInputMessage() {
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
     }
 
     @Override
     public void printResult(final Result result) {
-        // TODO: 정답과 입력값을 비교한 결과를 전달받아서 출력할 것
-        System.out.println();
+        if (result.isNothing()) {
+            System.out.println("낫싱");
+            return;
+        }
+
+        StringBuilder message = new StringBuilder();
+        appendBall(result.ball, message);
+        if (!message.isEmpty()) {
+            message.append(SPACE);
+        }
+        appendStrike(result.strike, message);
+        System.out.println(message);
+    }
+
+    private void appendBall(final int ball, StringBuilder message) {
+        if (ball > Result.INIT_VALUE) {
+            message.append(ball);
+            message.append("볼");
+        }
+    }
+
+    private void appendStrike(final int strike, StringBuilder message) {
+        if (strike > Result.INIT_VALUE) {
+            message.append(strike);
+            message.append("스트라이크");
+        }
     }
 
     @Override

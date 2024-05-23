@@ -19,7 +19,7 @@ public record InputNumber(
         if (values.size() != LENGTH) {
             throw new IllegalArgumentException("3자리의 자연수를 입력해주세요.");
         }
-        if (hasDuplicateValue()) {
+        if (hasDuplicateValue(values)) {
             throw new IllegalArgumentException("중복 없는 3자리 자연수를 입력해주세요.");
         }
     }
@@ -31,10 +31,14 @@ public record InputNumber(
     }
 
     private static boolean isInvalidDigit(final char ch) {
-        return !Character.isDigit(ch) || ch < MIN_NUMBER || ch > MAX_NUMBER;
+        if (!Character.isDigit(ch)) {
+            return false;
+        }
+        final int value = Character.getNumericValue(ch);
+        return value < MIN_NUMBER || value > MAX_NUMBER;
     }
 
-    private boolean hasDuplicateValue() {
+    private boolean hasDuplicateValue(List<Integer> values) {
         Set<Integer> checks = new HashSet<>(values);
         return checks.size() < LENGTH;
     }

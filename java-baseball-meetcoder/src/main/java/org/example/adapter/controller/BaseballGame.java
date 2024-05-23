@@ -55,6 +55,7 @@ public class BaseballGame {
         // FIXME: 메뉴도 클래스로 뽑는게 좋지 않을까?
         if (command.equals("1")) {
             process();
+            return;
         }
         // FIXME: Command 생성할 때 이미 예외를 검증했는데, 여기에 예외처리를 둘 필요가 있을까?
         throw new IllegalStateException("존재하지 않는 메뉴입니다.");
@@ -62,15 +63,21 @@ public class BaseballGame {
 
     private void process() {
         Answer answer = answerUsecase.generate();
+        System.out.println("정답 : "+answer.values().toString());
         systemMessageHandler.printStartMessage();
-        systemMessageHandler.printInputMessage();
-        String input = inputHandler.read();
-        InputNumber inputNumber = inputNumberUsecase.generate(input);
-        // 4. 입력값과 정답 비교
-        Result result = resultUsecase.check(answer, inputNumber);
-        // 5: 비교 결과를 힌트로 출력
-        systemMessageHandler.printResult(result);
-        // TODO: 5-1. 정답일 경우 : 정답 안내문 출력
+        runnable(answer);
+        systemMessageHandler.printAnswerMessage();
+    }
+
+    private void runnable(final Answer answer) {
+        Result result;
+        do {
+            systemMessageHandler.printInputMessage();
+            String input = inputHandler.read();
+            InputNumber inputNumber = inputNumberUsecase.generate(input);
+            result = resultUsecase.check(answer, inputNumber);
+            systemMessageHandler.printResult(result);
+        } while (!result.isThreeStrike());
     }
 
 }

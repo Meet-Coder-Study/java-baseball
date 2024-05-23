@@ -20,12 +20,12 @@ public record Answer(
         if (values.size() != LENGTH) {
             throw new IllegalArgumentException("게임 정답은 3자리의 자연수입니다.");
         }
-        if (hasDuplicateValue()) {
+        if (hasDuplicateValue(values)) {
             throw new IllegalArgumentException("게임 정답에는 중복 숫자가 없어야 합니다.");
         }
     }
 
-    private boolean hasDuplicateValue() {
+    private boolean hasDuplicateValue(List<Integer> values) {
         Set<Integer> checks = new HashSet<>(values);
         return checks.size() < LENGTH;
     }
