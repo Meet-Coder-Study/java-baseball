@@ -18,8 +18,7 @@ public class InputView implements InputHandler {
         try {
             return bufferedReader.readLine();
         } catch (IOException e) {
-            // TODO: custom exception을 사용해야 할까? 적절한 exception 고민해보기
-            throw new RuntimeException("입력 실패");
+            throw new RuntimeException("입력에 실패했습니다.");
         }
     }
 }
