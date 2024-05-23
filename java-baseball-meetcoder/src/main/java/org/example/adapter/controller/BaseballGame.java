@@ -1,5 +1,6 @@
 package org.example.adapter.controller;
 
+import org.example.adapter.enums.Menu;
 import org.example.application.port.in.AnswerUsecase;
 import org.example.application.port.in.InputNumberUsecase;
 import org.example.application.port.in.ResultUsecase;
@@ -37,13 +38,8 @@ public class BaseballGame {
             systemMessageHandler.printMenu();
             command = inputHandler.read();
             checkCommand(command);
-        } while (!isQuitCommand(command));
+        } while (Menu.isNotQuit(command));
         end();
-    }
-
-    private boolean isQuitCommand(final String command) {
-        // FIXME: 메뉴도 클래스로 뽑는게 좋지 않을까?
-        return command.equals("9");
     }
 
     private void end() {
@@ -52,18 +48,14 @@ public class BaseballGame {
     }
 
     private void checkCommand(final String command) {
-        // FIXME: 메뉴도 클래스로 뽑는게 좋지 않을까?
-        if (command.equals("1")) {
+        Menu requestMenu = Menu.from(command);
+        if (requestMenu.equals(Menu.START)) {
             process();
-            return;
         }
-        // FIXME: Command 생성할 때 이미 예외를 검증했는데, 여기에 예외처리를 둘 필요가 있을까?
-        throw new IllegalStateException("존재하지 않는 메뉴입니다.");
     }
 
     private void process() {
         Answer answer = answerUsecase.generate();
-        System.out.println("정답 : "+answer.values().toString());
         systemMessageHandler.printStartMessage();
         runnable(answer);
         systemMessageHandler.printAnswerMessage();
