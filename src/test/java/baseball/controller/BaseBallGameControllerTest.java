@@ -28,7 +28,7 @@ class BaseBallGameControllerTest {
     @DisplayName("게임을 시작한다.")
     @Test
     void GameStartTest() {
-        final int gameId = baseBallGameController.gameStart(() -> List.of(
+        final int gameId = baseBallGameController.startGame(() -> List.of(
                 new Number(1), new Number(2), new Number(3)));
 
         assertThat(gameRepository.findById(gameId)).isPresent();
@@ -37,7 +37,7 @@ class BaseBallGameControllerTest {
     @DisplayName("1스트라이크 1볼을 확인한다.")
     @Test
     void checkBallTest() {
-        final int gameId = baseBallGameController.gameStart(() -> List.of(
+        final int gameId = baseBallGameController.startGame(() -> List.of(
                 new Number(1), new Number(2), new Number(3)));
 
         final CheckBallResponse checkBallDto = baseBallGameController
@@ -54,7 +54,7 @@ class BaseBallGameControllerTest {
     @DisplayName("낫싱을 확인한다.")
     @Test
     void checkBallTest2() {
-        final int gameId = baseBallGameController.gameStart(() -> List.of(
+        final int gameId = baseBallGameController.startGame(() -> List.of(
                 new Number(1), new Number(2), new Number(3)));
 
         final CheckBallResponse checkBallDto = baseBallGameController.checkBalls(new CheckBallsRequest(List.of(4, 5, 6), gameId));
@@ -69,7 +69,7 @@ class BaseBallGameControllerTest {
     @DisplayName("3스트라이크를 확인한다.")
     @Test
     void checkBallTest3() {
-        final int gameId = baseBallGameController.gameStart(() -> List.of(
+        final int gameId = baseBallGameController.startGame(() -> List.of(
                 new Number(1), new Number(2), new Number(3)));
 
         final CheckBallResponse checkBallDto = baseBallGameController.checkBalls(new CheckBallsRequest(List.of(1, 2, 3), gameId));

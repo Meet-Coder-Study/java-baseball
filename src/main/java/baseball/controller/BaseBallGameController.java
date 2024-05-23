@@ -18,7 +18,7 @@ public class BaseBallGameController {
         this.gameRepository = gameRepository;
     }
 
-    public int gameStart(final BaseBallNumberGenerator baseBallNumberGenerator) {
+    public int startGame(final BaseBallNumberGenerator baseBallNumberGenerator) {
         final Game game = new Game(baseBallNumberGenerator.generate());
 
         return gameRepository.insert(game);
@@ -29,7 +29,7 @@ public class BaseBallGameController {
                 .orElseThrow(() -> new IllegalArgumentException("컴퓨터가 존재하지 않습니다."));
 
         final BaseBallNumbers playerNumbers = getPlayerNumbers(checkBallsRequest);
-        
+
         if (game.isSameNumbers(playerNumbers)) {
             return new CheckBallResponse(ALL_STRIKE_CONT, 0, false, true);
         }
@@ -38,9 +38,10 @@ public class BaseBallGameController {
         int strikeNumber = 0;
 
         for (final Number number : playerNumbers) {
-            if (game.isStrike(number, playerNumbers.indexOf(number))) {
+            final int index = playerNumbers.indexOf(number);
+            if (game.isStrike(number, index)) {
                 strikeNumber++;
-            } else if (game.isBall(number)) {
+            } else if (game.isBall(number, index)) {
                 ballNumber++;
             }
         }

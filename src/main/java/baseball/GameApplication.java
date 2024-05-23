@@ -1,7 +1,7 @@
 package baseball;
 
 import baseball.controller.BaseBallGameController;
-import baseball.domain.Commend;
+import baseball.domain.Command;
 import baseball.dto.CheckBallResponse;
 import baseball.dto.CheckBallsRequest;
 import baseball.generator.BaseBallNumberGenerator;
@@ -12,7 +12,7 @@ import baseball.view.OutputView;
 
 import java.util.List;
 
-public class GameApplication {
+public final class GameApplication {
     private static final BaseBallNumberGenerator baseBallNumberGenerator = new BaseBallNumberShuffleGenerator();
     private static final BaseBallGameController baseBallGameController = new BaseBallGameController(new GameRepositoryImpl());
 
@@ -20,40 +20,40 @@ public class GameApplication {
     }
 
     public static void run() {
-        Commend commend = Commend.END;
+        Command command = Command.END;
         try {
             do {
-                commend = Commend.of(InputView.inputMenu());
-                final int gameId = baseBallGameController.gameStart(baseBallNumberGenerator);
+                command = Command.of(InputView.inputMenu());
+                final int gameId = baseBallGameController.startGame(baseBallNumberGenerator);
                 OutputView.printPickComputerNumbers();
-                gameInProgress(gameId);
+                executeGame(gameId);
             }
-            while (commend != Commend.END);
-            applicationEnd();
+            while (command != Command.END);
+            endApplication();
         } catch (final Exception e) {
             OutputView.printErrorMessage(e.getMessage());
             run();
         }
     }
 
-    private static void applicationEnd() {
+    private static void endApplication() {
         OutputView.printExitMessage();
     }
 
-    private static void gameInProgress(final int gameId) {
+    private static void executeGame(final int gameId) {
         try {
-            boolean isFinished = true;
+            boolean isInprogress = true;
 
-            while (isFinished) {
+            while (isInprogress) {
                 final List<Integer> userNumbers = InputView.inputNumbers();
                 final CheckBallsRequest checkBallsRequest = new CheckBallsRequest(userNumbers, gameId);
                 final CheckBallResponse checkBallDto = baseBallGameController.checkBalls(checkBallsRequest);
                 OutputView.printResult(checkBallDto);
-                isFinished = !checkBallDto.isSuccess();
+                isInprogress = !checkBallDto.isSuccess();
             }
         } catch (final Exception e) {
             OutputView.printErrorMessage(e.getMessage());
-            gameInProgress(gameId);
+            executeGame(gameId);
         }
     }
 }

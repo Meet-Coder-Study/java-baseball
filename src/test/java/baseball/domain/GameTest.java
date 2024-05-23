@@ -16,8 +16,20 @@ class GameTest {
                 new Number(3));
         final Game game = new Game(numbers);
         final Number number = new Number(1);
-        
-        assertThat(game.isBall(number)).isTrue();
+
+        assertThat(game.isBall(number, numbers.indexOf(number) + 1)).isTrue();
+    }
+
+    @DisplayName("스트라이크라면 false를 반환한다.")
+    @Test
+    void isBallFalseWithStrikeTest() {
+        final List<Number> numbers = List.of(new Number(1),
+                new Number(2),
+                new Number(3));
+        final Game game = new Game(numbers);
+        final Number number = new Number(1);
+
+        assertThat(game.isBall(number, numbers.indexOf(number))).isFalse();
     }
 
     @DisplayName("숫자가 존재하지 않는다면 false를 반환한다.")
@@ -29,7 +41,7 @@ class GameTest {
         final Game game = new Game(numbers);
         final Number number = new Number(4);
 
-        assertThat(game.isBall(number)).isFalse();
+        assertThat(game.isBall(number, numbers.indexOf(number))).isFalse();
     }
 
     @DisplayName("해당 숫자가 해당 위치에 존재하면 True를 반환한다.")
