@@ -1,6 +1,7 @@
 package org.example.adapter.view;
 
 import org.example.application.port.in.SystemMessageHandler;
+import org.example.domain.Result;
 
 public class SystemMessagePrinter implements SystemMessageHandler {
 
@@ -20,7 +21,7 @@ public class SystemMessagePrinter implements SystemMessageHandler {
     }
 
     @Override
-    public void printHintMessage() {
+    public void printResult(final Result result) {
         // TODO: 정답과 입력값을 비교한 결과를 전달받아서 출력할 것
         System.out.println();
     }
