@@ -8,6 +8,9 @@ public record BallStrikeCount(
 ) {
 
     public void showBallStrikeCount() {
+        if (ballCount == 0 && strikeCount > 0) {
+            System.out.println(strikeCount + GameMessage.STRIKE);
+        }
         if (strikeCount == 3) {
             System.out.println(GameMessage.THREE_STRIKE);
         }
@@ -16,9 +19,6 @@ public record BallStrikeCount(
         }
         if (ballCount > 0 && strikeCount == 0) {
             System.out.println(ballCount + GameMessage.BALL);
-        }
-        if (ballCount == 0 && strikeCount > 0) {
-            System.out.println(strikeCount + GameMessage.STRIKE);
         }
         if (ballCount > 0 && strikeCount > 0) {
             System.out.println(ballCount + GameMessage.BALL + " " + strikeCount + GameMessage.STRIKE);
