@@ -29,22 +29,26 @@ public class BaseBallGameClient implements GameClient {
 
     @Override
     public void play() {
-        System.out.println(GameMessage.COMPUTER_CHOOSE_NUMBER);
-        randomNumbers = randomNumberGenerator.getRandomNumbers();
+        getRandomNum();
+        playWithNumber();
+        System.out.println(GameMessage.GAME_END);
+    }
 
+    private void playWithNumber() {
         System.out.println(GameMessage.CHOOSE_NUMBER);
         int clientNumber = clientRequest.getNumber();
-
         BaseBallValidator.validateClientNumber(clientNumber);
         List<Integer> userInputList = convertingUserNumberToList(clientNumber);
         BallStrikeCount ballStrikeCount = baseBallCounter.checkCount(randomNumbers, userInputList);
         ballStrikeCount.showBallStrikeCount();
         if (ballStrikeCount.strikeCount() != 3) {
-            play();
-            return;
+            playWithNumber();
         }
+    }
 
-        System.out.println(GameMessage.GAME_END);
+    private void getRandomNum() {
+        System.out.println(GameMessage.COMPUTER_CHOOSE_NUMBER);
+        randomNumbers = randomNumberGenerator.getRandomNumbers();
     }
 
     private List<Integer> convertingUserNumberToList(int clientNumber) {
