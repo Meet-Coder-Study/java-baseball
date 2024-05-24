@@ -1,7 +1,9 @@
 package org.example.client;
 
 public interface GameClient {
-    void setUp();
+
+    int setup();
     void play();
     void stop();
+
 }
