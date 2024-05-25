@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-class AnswerNumberTest {
+class AnswerTest {
 
     @Test
     public void 정답을_생성할_수_있다() {
@@ -14,10 +14,10 @@ class AnswerNumberTest {
         List<Integer> values = List.of(1, 2, 3);
 
         // when
-        AnswerNumber answerNumber = new AnswerNumber(values);
+        Answer answer = new Answer(values);
 
         // then
-        assertEquals(answerNumber.values, values);
+        assertEquals(answer.values, values);
     }
 
     @Test
@@ -27,7 +27,7 @@ class AnswerNumberTest {
 
         // when
         // then
-        assertThatThrownBy(() -> new AnswerNumber(values))
+        assertThatThrownBy(() -> new Answer(values))
             .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -38,7 +38,7 @@ class AnswerNumberTest {
 
         // when
         // then
-        assertThatThrownBy(() -> new AnswerNumber(values))
+        assertThatThrownBy(() -> new Answer(values))
             .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -49,7 +49,7 @@ class AnswerNumberTest {
 
         // when
         // then
-        assertThatThrownBy(() -> new AnswerNumber(values))
+        assertThatThrownBy(() -> new Answer(values))
             .isInstanceOf(IllegalArgumentException.class);
     }
 

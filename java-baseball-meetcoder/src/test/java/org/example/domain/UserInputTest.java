@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-class InputNumberTest {
+class UserInputTest {
 
     @Test
     public void 사용자_입력값을_생성할_수_있다() {
@@ -14,10 +14,10 @@ class InputNumberTest {
         List<Integer> values = List.of(1, 2, 3);
 
         // when
-        InputNumber inputNumber = new InputNumber(values);
+        UserInput userInput = new UserInput(values);
 
         // then
-        assertEquals(inputNumber.values, values);
+        assertEquals(userInput.values, values);
     }
 
     @Test
@@ -27,7 +27,7 @@ class InputNumberTest {
 
         // when
         // then
-        assertThatThrownBy(() -> new InputNumber(values))
+        assertThatThrownBy(() -> new UserInput(values))
             .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -38,7 +38,7 @@ class InputNumberTest {
 
         // when
         // then
-        assertThatThrownBy(() -> new InputNumber(values))
+        assertThatThrownBy(() -> new UserInput(values))
             .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -49,7 +49,7 @@ class InputNumberTest {
 
         // when
         // then
-        assertThatThrownBy(() -> new InputNumber(values))
+        assertThatThrownBy(() -> new UserInput(values))
             .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -61,7 +61,7 @@ class InputNumberTest {
         // when
         // then
         for (char ch : alphabet) {
-            assertThatThrownBy(() -> InputNumber.checkValidChar(ch))
+            assertThatThrownBy(() -> UserInput.checkValidChar(ch))
                 .isInstanceOf(IllegalArgumentException.class);
         }
     }
@@ -75,7 +75,7 @@ class InputNumberTest {
         // when
         // then
         for (char ch : specialCharacters) {
-            assertThatThrownBy(() -> InputNumber.checkValidChar(ch))
+            assertThatThrownBy(() -> UserInput.checkValidChar(ch))
                 .isInstanceOf(IllegalArgumentException.class);
         }
     }
@@ -87,7 +87,7 @@ class InputNumberTest {
 
         // when
         // then
-        assertThatThrownBy(() -> InputNumber.checkValidChar(ch))
+        assertThatThrownBy(() -> UserInput.checkValidChar(ch))
             .isInstanceOf(IllegalArgumentException.class);
     }
 

@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public abstract class Number {
+public class Answer {
 
     public List<Integer> values;
 
@@ -13,7 +13,7 @@ public abstract class Number {
     public static final int START_INDEX = 0;
     public static final int LENGTH = 3;
 
-    public Number(List<Integer> values) {
+    public Answer(List<Integer> values) {
         this.values = values;
         checkNull(values);
         checkLength(values);

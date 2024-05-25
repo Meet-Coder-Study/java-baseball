@@ -2,12 +2,12 @@ package org.example.adapter.controller;
 
 import org.example.adapter.enums.Menu;
 import org.example.application.port.in.AnswerUsecase;
+import org.example.application.port.in.InputHandler;
 import org.example.application.port.in.InputNumberUsecase;
 import org.example.application.port.in.ResultUsecase;
-import org.example.application.port.in.InputHandler;
 import org.example.application.port.in.SystemMessageHandler;
-import org.example.domain.AnswerNumber;
-import org.example.domain.InputNumber;
+import org.example.domain.Answer;
+import org.example.domain.UserInput;
 import org.example.domain.Result;
 
 public class BaseballGame {
@@ -55,19 +55,19 @@ public class BaseballGame {
     }
 
     private void process() {
-        AnswerNumber answerNumber = answerUsecase.generate();
+        Answer answer = answerUsecase.generate();
         systemMessageHandler.printStartMessage();
-        userTry(answerNumber);
+        userTry(answer);
         systemMessageHandler.printAnswerMessage();
     }
 
-    private void userTry(final AnswerNumber answerNumber) {
+    private void userTry(final Answer answer) {
         Result result;
         do {
             systemMessageHandler.printInputMessage();
             String input = inputHandler.read();
-            InputNumber inputNumber = inputNumberUsecase.generate(input);
-            result = resultUsecase.check(answerNumber, inputNumber);
+            UserInput userInput = inputNumberUsecase.generate(input);
+            result = resultUsecase.check(answer, userInput);
             systemMessageHandler.printResult(result);
         } while (!result.isThreeStrike());
     }

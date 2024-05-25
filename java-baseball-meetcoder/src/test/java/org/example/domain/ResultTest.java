@@ -71,12 +71,12 @@ class ResultTest {
         // given
         List<Integer> computerValues = List.of(1, 2, 3);
         List<Integer> userValues = List.of(2, 5, 6);
-        AnswerNumber answerNumber = new AnswerNumber(computerValues);
-        InputNumber inputNumber = new InputNumber(userValues);
+        Answer answer = new Answer(computerValues);
+        UserInput userInput = new UserInput(userValues);
         int index = 0;
 
         // when
-        boolean isBall = Result.isBall(answerNumber, inputNumber, index);
+        boolean isBall = Result.isBall(answer, userInput, index);
 
         //then
         assertTrue(isBall);
@@ -87,12 +87,12 @@ class ResultTest {
         // given
         List<Integer> computerValues = List.of(1, 2, 3);
         List<Integer> userValues = List.of(1, 5, 6);
-        AnswerNumber answerNumber = new AnswerNumber(computerValues);
-        InputNumber inputNumber = new InputNumber(userValues);
+        Answer answer = new Answer(computerValues);
+        UserInput userInput = new UserInput(userValues);
         int index = 0;
 
         // when
-        boolean isStrike = Result.isStrike(answerNumber, inputNumber, index);
+        boolean isStrike = Result.isStrike(answer, userInput, index);
 
         //then
         assertTrue(isStrike);

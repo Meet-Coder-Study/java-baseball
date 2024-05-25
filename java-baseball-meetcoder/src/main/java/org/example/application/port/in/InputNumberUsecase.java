@@ -1,9 +1,9 @@
 package org.example.application.port.in;
 
-import org.example.domain.InputNumber;
+import org.example.domain.UserInput;
 
 public interface InputNumberUsecase {
 
-    InputNumber generate(String input);
+    UserInput generate(String input);
 
 }

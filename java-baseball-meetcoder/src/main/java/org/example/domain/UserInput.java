@@ -2,9 +2,9 @@ package org.example.domain;
 
 import java.util.List;
 
-public class InputNumber extends Number {
+public class UserInput extends Answer {
 
-    public InputNumber(List<Integer> values) {
+    public UserInput(List<Integer> values) {
         super(values);
     }
 
