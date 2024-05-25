@@ -44,8 +44,8 @@ public class Result {
         final UserInput userInput,
         final int index
     ) {
-        final List<Integer> computerValues = answer.values;
-        final Integer userNum = userInput.values.get(index);
+        final List<Number> computerValues = answer.values;
+        final Number userNum = userInput.values.get(index);
         return !isStrike(answer, userInput, index) && computerValues.contains(userNum);
     }
 
@@ -54,8 +54,8 @@ public class Result {
         final UserInput userInput,
         final int index
     ) {
-        final Integer computerNum = answer.values.get(index);
-        final Integer userNum = userInput.values.get(index);
+        final Number computerNum = answer.values.get(index);
+        final Number userNum = userInput.values.get(index);
         return Objects.equals(computerNum, userNum);
     }
 

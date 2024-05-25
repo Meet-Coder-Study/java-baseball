@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
+import org.example.factory.NumberFactory;
 import org.junit.jupiter.api.Test;
 
 class ResultTest {
@@ -69,8 +70,8 @@ class ResultTest {
     @Test
     public void 다른_위치에_같은_수가_있다면_볼로_판정할_수_있다() {
         // given
-        List<Integer> computerValues = List.of(1, 2, 3);
-        List<Integer> userValues = List.of(2, 5, 6);
+        List<Number> computerValues = NumberFactory.createNumberList(1, 2, 3);
+        List<Number> userValues = NumberFactory.createNumberList(2, 5, 6);
         Answer answer = new Answer(computerValues);
         UserInput userInput = new UserInput(userValues);
         int index = 0;
@@ -85,8 +86,8 @@ class ResultTest {
     @Test
     public void 같은_위치에_같은_수가_있다면_스트라이크로_판정할_수_있다() {
         // given
-        List<Integer> computerValues = List.of(1, 2, 3);
-        List<Integer> userValues = List.of(1, 5, 6);
+        List<Number> computerValues = NumberFactory.createNumberList(1, 2, 3);
+        List<Number> userValues = NumberFactory.createNumberList(1, 5, 6);
         Answer answer = new Answer(computerValues);
         UserInput userInput = new UserInput(userValues);
         int index = 0;

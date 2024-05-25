@@ -4,6 +4,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
+import org.example.factory.NumberFactory;
 import org.junit.jupiter.api.Test;
 
 class UserInputTest {
@@ -11,7 +12,7 @@ class UserInputTest {
     @Test
     public void 사용자_입력값을_생성할_수_있다() {
         // given
-        List<Integer> values = List.of(1, 2, 3);
+        List<Number> values = NumberFactory.createNumberList(1, 2, 3);
 
         // when
         UserInput userInput = new UserInput(values);
@@ -23,7 +24,7 @@ class UserInputTest {
     @Test
     public void null로_사용자_입력값을_생성하려하면_에러를_던진다() {
         // given
-        List<Integer> values = null;
+        List<Number> values = null;
 
         // when
         // then
@@ -34,7 +35,7 @@ class UserInputTest {
     @Test
     public void 세자리_자리수가_아닌_수로_사용자_입력값을_생성하려하면_에러를_던진다() {
         // given
-        List<Integer> values = List.of(1, 2);
+        List<Number> values = NumberFactory.createNumberList(1, 2);
 
         // when
         // then
@@ -45,7 +46,7 @@ class UserInputTest {
     @Test
     public void 중복값으로_사용자_입력값을_생성하려하면_에러를_던진다() {
         // given
-        List<Integer> values = List.of(1, 2, 2);
+        List<Number> values = NumberFactory.createNumberList(1, 2, 2);
 
         // when
         // then

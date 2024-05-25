@@ -1,10 +1,13 @@
 package org.example.domain;
 
+import static org.example.domain.Number.MAX_NUMBER;
+import static org.example.domain.Number.MIN_NUMBER;
+
 import java.util.List;
 
 public class UserInput extends Answer {
 
-    public UserInput(List<Integer> values) {
+    public UserInput(List<Number> values) {
         super(values);
     }
 
