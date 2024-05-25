@@ -45,9 +45,8 @@ public class Result {
         final int index
     ) {
         final List<Integer> computerValues = answer.values();
-        final Integer computerNum = computerValues.get(index);
         final Integer userNum = inputNumber.values().get(index);
-        return !Objects.equals(computerNum, userNum) && computerValues.contains(userNum);
+        return !isStrike(answer, inputNumber, index) && computerValues.contains(userNum);
     }
 
     public static boolean isStrike(
