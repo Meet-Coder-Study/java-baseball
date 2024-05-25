@@ -40,22 +40,22 @@ public class Result {
     }
 
     public static boolean isBall(
-        final Answer answer,
+        final AnswerNumber answerNumber,
         final InputNumber inputNumber,
         final int index
     ) {
-        final List<Integer> computerValues = answer.values();
-        final Integer userNum = inputNumber.values().get(index);
-        return !isStrike(answer, inputNumber, index) && computerValues.contains(userNum);
+        final List<Integer> computerValues = answerNumber.values;
+        final Integer userNum = inputNumber.values.get(index);
+        return !isStrike(answerNumber, inputNumber, index) && computerValues.contains(userNum);
     }
 
     public static boolean isStrike(
-        final Answer answer,
+        final AnswerNumber answerNumber,
         final InputNumber inputNumber,
         final int index
     ) {
-        final Integer computerNum = answer.values().get(index);
-        final Integer userNum = inputNumber.values().get(index);
+        final Integer computerNum = answerNumber.values.get(index);
+        final Integer userNum = inputNumber.values.get(index);
         return Objects.equals(computerNum, userNum);
     }
 

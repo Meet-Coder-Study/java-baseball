@@ -1,9 +1,9 @@
 package org.example.application.port.in;
 
-import org.example.domain.Answer;
+import org.example.domain.AnswerNumber;
 
 public interface AnswerUsecase {
 
-    Answer generate();
+    AnswerNumber generate();
 
 }

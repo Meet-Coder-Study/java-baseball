@@ -17,7 +17,7 @@ class InputNumberTest {
         InputNumber inputNumber = new InputNumber(values);
 
         // then
-        assertEquals(inputNumber.values(), values);
+        assertEquals(inputNumber.values, values);
     }
 
     @Test

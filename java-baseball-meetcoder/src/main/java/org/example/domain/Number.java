@@ -4,16 +4,17 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public record Answer(
-    List<Integer> values
-) {
+public abstract class Number {
+
+    public List<Integer> values;
 
     public static final int MIN_NUMBER = 1;
     public static final int MAX_NUMBER = 9;
     public static final int START_INDEX = 0;
     public static final int LENGTH = 3;
 
-    public Answer {
+    public Number(List<Integer> values) {
+        this.values = values;
         checkNull(values);
         checkLength(values);
         checkHasDuplicate(values);
@@ -21,19 +22,19 @@ public record Answer(
 
     private void checkNull(List<Integer> values) {
         if (values == null) {
-            throw new IllegalArgumentException("게임 정답은 null일 수 없습니다.");
+            throw new IllegalArgumentException("값을 입력해주세요.");
         }
     }
 
     private void checkLength(List<Integer> values) {
         if (values.size() != LENGTH) {
-            throw new IllegalArgumentException("게임 정답은 3자리의 자연수입니다.");
+            throw new IllegalArgumentException("3자리의 자연수를 입력해주세요.");
         }
     }
 
     private void checkHasDuplicate(List<Integer> values) {
         if (hasDuplicateValue(values)) {
-            throw new IllegalArgumentException("게임 정답에는 중복 숫자가 없어야 합니다.");
+            throw new IllegalArgumentException("중복 없는 3자리 자연수를 입력해주세요.");
         }
     }
 

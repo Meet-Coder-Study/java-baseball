@@ -6,7 +6,7 @@ import org.example.application.port.in.InputNumberUsecase;
 import org.example.application.port.in.ResultUsecase;
 import org.example.application.port.in.InputHandler;
 import org.example.application.port.in.SystemMessageHandler;
-import org.example.domain.Answer;
+import org.example.domain.AnswerNumber;
 import org.example.domain.InputNumber;
 import org.example.domain.Result;
 
@@ -55,19 +55,19 @@ public class BaseballGame {
     }
 
     private void process() {
-        Answer answer = answerUsecase.generate();
+        AnswerNumber answerNumber = answerUsecase.generate();
         systemMessageHandler.printStartMessage();
-        userTry(answer);
+        userTry(answerNumber);
         systemMessageHandler.printAnswerMessage();
     }
 
-    private void userTry(final Answer answer) {
+    private void userTry(final AnswerNumber answerNumber) {
         Result result;
         do {
             systemMessageHandler.printInputMessage();
             String input = inputHandler.read();
             InputNumber inputNumber = inputNumberUsecase.generate(input);
-            result = resultUsecase.check(answer, inputNumber);
+            result = resultUsecase.check(answerNumber, inputNumber);
             systemMessageHandler.printResult(result);
         } while (!result.isThreeStrike());
     }
