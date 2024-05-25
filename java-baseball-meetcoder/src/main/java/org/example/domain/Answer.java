@@ -14,12 +14,24 @@ public record Answer(
     public static final int LENGTH = 3;
 
     public Answer {
+        checkNull(values);
+        checkLength(values);
+        checkHasDuplicate(values);
+    }
+
+    private void checkNull(List<Integer> values) {
         if (values == null) {
             throw new IllegalArgumentException("게임 정답은 null일 수 없습니다.");
         }
+    }
+
+    private void checkLength(List<Integer> values) {
         if (values.size() != LENGTH) {
             throw new IllegalArgumentException("게임 정답은 3자리의 자연수입니다.");
         }
+    }
+
+    private void checkHasDuplicate(List<Integer> values) {
         if (hasDuplicateValue(values)) {
             throw new IllegalArgumentException("게임 정답에는 중복 숫자가 없어야 합니다.");
         }

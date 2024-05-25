@@ -13,12 +13,24 @@ public record InputNumber(
     public static final int LENGTH = 3;
 
     public InputNumber {
+        checkNull(values);
+        checkLength(values);
+        checkHasDuplicate(values);
+    }
+
+    private void checkNull(List<Integer> values) {
         if (values == null) {
             throw new IllegalArgumentException("값을 입력해주세요.");
         }
+    }
+
+    private void checkLength(List<Integer> values) {
         if (values.size() != LENGTH) {
             throw new IllegalArgumentException("3자리의 자연수를 입력해주세요.");
         }
+    }
+
+    private void checkHasDuplicate(List<Integer> values) {
         if (hasDuplicateValue(values)) {
             throw new IllegalArgumentException("중복 없는 3자리 자연수를 입력해주세요.");
         }
