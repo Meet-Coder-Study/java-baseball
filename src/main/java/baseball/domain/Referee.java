@@ -27,11 +27,11 @@ public class Referee {
     }
 
     public String getCallMessage() {
-        String call = generateCallString();
-        if (call.isEmpty()) {
-            call = NOTHING_CALL;
+        String callMessage = generateCallMessage();
+        if (callMessage.isEmpty()) {
+            callMessage = NOTHING_CALL;
         }
-        return call;
+        return callMessage;
     }
 
     private void resetCounts() {
@@ -59,7 +59,7 @@ public class Referee {
         return strike == OUT_COUNT;
     }
 
-    private String generateCallString() {
+    private String generateCallMessage() {
         StringBuilder call = new StringBuilder();
         if (ball != INIT_COUNT) {
             call.append(ball)
