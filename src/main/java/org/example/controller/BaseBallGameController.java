@@ -23,12 +23,20 @@ public class BaseBallGameController implements GameController {
             run();
             return;
         }
-        if(setupNumber == 1) {
-            gameClient.play();
-            run();
-            return;
+        if (setupNumber == 1) {
+            startPlay(gameClient);
         }
         gameClient.stop();
+    }
+
+    private void startPlay(GameClient gameClient) {
+        try {
+            gameClient.play();
+            run();
+        } catch (BaseBallException e){
+            System.out.println(e.getMessage());
+            startPlay(gameClient);
+        }
     }
 
 }
