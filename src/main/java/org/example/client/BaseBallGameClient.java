@@ -31,7 +31,6 @@ public class BaseBallGameClient implements GameClient {
     public void play() {
         getRandomNum();
         playWithNumber();
-        System.out.println(GameMessage.GAME_END);
     }
 
     private void playWithNumber() {
