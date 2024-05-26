@@ -5,17 +5,21 @@ import org.example.message.BaseBallErrorMessage;
 
 public class CommandLineRequest implements ClientRequest {
 
-    private static final Scanner scanner = new Scanner(System.in);
-
     @Override
     public String getWrite(){
-        return scanner.nextLine();
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+        scanner.close();
+        return input;
     }
 
     @Override
     public int getNumber() {
         try {
-            return Integer.parseInt(scanner.nextLine());
+            Scanner scanner = new Scanner(System.in);
+            int input = Integer.parseInt(scanner.nextLine());
+            scanner.close();
+            return input;
         } catch (RuntimeException e){
             System.out.println(BaseBallErrorMessage.NON_NUMBER_INPUT_ERROR);
             return getNumber();
