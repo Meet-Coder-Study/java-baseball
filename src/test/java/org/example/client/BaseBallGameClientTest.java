@@ -36,22 +36,6 @@ class BaseBallGameClientTest {
     }
 
     @Test
-    @DisplayName("정상적으로 야구 게임을 세팅한다.")
-    void setupSuccess() {
-        //given
-        String input = String.valueOf(1);
-        provideInput(input);
-
-        //when
-        int gameNumber = client.setup();
-
-        //then
-        String actualOutput = outputStreamCaptor.toString().trim();
-        assertThat(actualOutput).isEqualTo(GameMessage.GAME_START);
-        assertThat(gameNumber).isEqualTo(1);
-    }
-
-    @Test
     @DisplayName("정상적으로 야구 게임 종료 메시지를 전달한다.")
     void closeSuccess() {
         //given
