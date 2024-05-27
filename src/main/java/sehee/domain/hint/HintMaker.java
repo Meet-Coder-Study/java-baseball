@@ -4,9 +4,11 @@ import static sehee.domain.answer.AnswerConstant.RANDOM_NUMBER_LENGTH;
 
 import sehee.domain.answer.Answer;
 
-public class HintProvider {
+public record HintMaker(
 
-    public Hint getHintFrom(Answer answer, Answer userAnswer) {
+) {
+
+    public Hint make(Answer answer, Answer userAnswer) {
         int strikeCnt = 0;
         int ballCnt = 0;
         for (int i = 0; i < RANDOM_NUMBER_LENGTH; i++) {
