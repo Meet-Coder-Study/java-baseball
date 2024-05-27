@@ -17,7 +17,7 @@ public class CliReader implements Reader {
     }
 
     @Override
-    public int readOneNumber() throws IOException, NumberFormatException {
+    public int readOneNumber() throws IOException {
         char[] inputs = getStringInput().toCharArray();
         if (inputs.length > 1) {
             throw new IllegalArgumentException("1자리 숫자만 입력해주세요.");
@@ -27,12 +27,13 @@ public class CliReader implements Reader {
     }
 
     @Override
-    public int[] readNumbers() throws IOException, NumberFormatException {
+    public int[] readNumbers() throws IOException {
         char[] inputs = getStringInput().toCharArray();
         int[] numbers = new int[inputs.length];
         for (int i = 0; i < inputs.length; i++) {
             numbers[i] = convertCharToInt(inputs[i]);
         }
+
         return numbers;
     }
 
@@ -47,9 +48,8 @@ public class CliReader implements Reader {
 
     private void checkIsNumber(char character) {
         if (character < ASCII_CODE_DECIMAL_ONE || ASCII_CODE_DECIMAL_NINE < character) {
-            throw new NumberFormatException();
+            throw new NumberFormatException("숫자를 입력해주세요.");
         }
-
     }
 
 }
