@@ -1,0 +1,9 @@
+/src/main/resources/application.properties
+/build/
+/.gradle/
+/.idea/.name
+/.idea/compiler.xml
+/.idea/gradle.xml
+/.idea/libraries-with-intellij-classes.xml
+/.idea/jarRepositories.xml
+/.idea/uiDesigner.xml
