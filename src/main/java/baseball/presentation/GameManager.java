@@ -26,20 +26,22 @@ public class GameManager {
     }
 
     public List<Integer> getUserDigits() {
-        while (true) {
+        List<Integer> userDigits;
+        do {
             try {
                 messagePrinter.inputNumberMessage();
                 int userNumber = scanner.nextInt();
-                List<Integer> userDigits = intToDigits(userNumber);
+                userDigits = intToDigits(userNumber);
 
                 validateLength(userDigits);
                 validateDuplication(userDigits);
 
-                return userDigits;
+                break;
             } catch (Exception e) {
                 messagePrinter.errorMessage(e.getMessage());
             }
-        }
+        } while (true);
+        return userDigits;
     }
 
     public List<Integer> getComputerDigits(Computer computer) {
@@ -74,5 +76,4 @@ public class GameManager {
             throw new InvalidNumberException("서로 다른 숫자만 가능합니다.");
         }
     }
-
 }
