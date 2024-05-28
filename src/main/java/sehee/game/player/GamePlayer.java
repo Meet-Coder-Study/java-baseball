@@ -1,7 +1,10 @@
 package sehee.game.player;
 
-import static sehee.util.constant.RandomNumberGameConstant.END_NUMBER;
-import static sehee.util.constant.RandomNumberGameConstant.START_NUMBER;
+import static sehee.util.constant.GamePlayerMessage.CHOOSE_START_OR_END_EXCEPTION_MESSAGE;
+import static sehee.util.constant.GamePlayerMessage.CHOOSE_START_OR_END_MESSAGE;
+import static sehee.util.constant.GamePlayerMessage.OFF_MESSAGE;
+import static sehee.util.constant.NumberBaseballGameConstant.END_NUMBER;
+import static sehee.util.constant.NumberBaseballGameConstant.START_NUMBER;
 
 import java.io.IOException;
 import sehee.exception.ExceptionHandler;
@@ -21,7 +24,7 @@ public record GamePlayer(
         while (working) {
             working = checkWorkingAndPlayGame();
         }
-        printer.println("애플리케이션이 종료되었습니다.");
+        printer.println(OFF_MESSAGE);
     }
 
     private boolean checkWorkingAndPlayGame() {
@@ -39,7 +42,7 @@ public record GamePlayer(
     }
 
     private boolean checkStopGame() throws IOException {
-        printer.println("게임을 새로 시작하려면 " + START_NUMBER + ", 종료하려면 " + END_NUMBER + "를 입력하세요.");
+        printer.println(CHOOSE_START_OR_END_MESSAGE);
 
         int flag = reader.readOneNumber();
         switch (flag) {
@@ -51,7 +54,7 @@ public record GamePlayer(
             }
         }
 
-        throw new IllegalArgumentException("1(시작) 혹은 9(종료)를 입력해주세요.");
+        throw new IllegalArgumentException(CHOOSE_START_OR_END_EXCEPTION_MESSAGE);
     }
 
 }
