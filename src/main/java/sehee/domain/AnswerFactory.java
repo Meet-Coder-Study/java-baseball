@@ -11,7 +11,7 @@ public record AnswerFactory(
     public Answer make() {
         boolean[] isExist = new boolean[10];
         isExist[0] = true;
-        int[] randomNumbers = makeAllUniqueRandom(isExist);
+        int[] randomNumbers = makeUniqueRandomNumbers(isExist);
 
         return new Answer(randomNumbers);
     }
@@ -25,17 +25,17 @@ public record AnswerFactory(
         return new Answer(userInputs);
     }
 
-    private int[] makeAllUniqueRandom(boolean[] isExist) {
+    private int[] makeUniqueRandomNumbers(boolean[] isExist) {
         int[] randomNumbers = new int[ANSWER_LENGTH];
         int count = 0;
         while (count < randomNumbers.length) {
-            count = makeUniqueRandom(isExist, randomNumbers, count);
+            count = makeAndCountUniqueRandomNumber(isExist, randomNumbers, count);
         }
 
         return randomNumbers;
     }
 
-    private int makeUniqueRandom(boolean[] isExist, int[] randomNumbers, int count) {
+    private int makeAndCountUniqueRandomNumber(boolean[] isExist, int[] randomNumbers, int count) {
         int randomNumber = numberMaker.makeRandomOne(); // 1~9
         if (!isExist[randomNumber]) { // 모두 다른 숫자
             isExist[randomNumber] = true;
