@@ -1,12 +1,10 @@
 package sehee.answer;
 
-import static sehee.util.constant.RandomNumberGameConstant.ANSWER_LENGTH;
-
 // package-private
 final class AnswerNumberValidator {
 
-    static void check(int[] numbers) {
-        checkLength(numbers, ANSWER_LENGTH);
+    static void check(int[] numbers, int length) {
+        checkLength(numbers, length);
         checkAllUnique(numbers);
     }
 

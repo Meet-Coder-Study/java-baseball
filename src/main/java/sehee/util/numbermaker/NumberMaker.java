@@ -4,6 +4,6 @@ public interface NumberMaker {
 
     int make();
 
-    int[] makeAllUnique();
+    int[] makeAllUnique(int length);
 
 }

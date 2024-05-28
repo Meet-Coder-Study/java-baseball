@@ -1,7 +1,5 @@
 package sehee.util.numbermaker;
 
-import static sehee.util.constant.RandomNumberGameConstant.ANSWER_LENGTH;
-
 import java.util.Random;
 
 // package-private
@@ -17,11 +15,11 @@ public class RandomNumberMaker implements NumberMaker {
         return random.nextInt(9) + 1;
     }
 
-    public int[] makeAllUnique() {
+    public int[] makeAllUnique(int length) {
         boolean[] isExist = new boolean[10];
         isExist[0] = true;
 
-        int[] randomNumbers = new int[ANSWER_LENGTH];
+        int[] randomNumbers = new int[length];
         int count = 0;
         while (count < randomNumbers.length) {
             count = makeAndCountUnique(isExist, randomNumbers, count);

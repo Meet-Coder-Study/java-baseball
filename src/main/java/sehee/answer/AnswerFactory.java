@@ -9,13 +9,13 @@ public record AnswerFactory(
 ) {
 
     public Answer make() {
-        int[] numbers = numberMaker.makeAllUnique();
+        int[] numbers = numberMaker.makeAllUnique(ANSWER_LENGTH);
 
         return new Answer(numbers);
     }
 
     public Answer make(int[] numbers) {
-        AnswerNumberValidator.check(numbers);
+        AnswerNumberValidator.check(numbers, ANSWER_LENGTH);
 
         return new Answer(numbers);
     }
