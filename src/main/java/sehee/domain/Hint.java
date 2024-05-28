@@ -1,10 +1,11 @@
-package sehee.domain.hint;
+package sehee.domain;
 
 public class Hint {
 
     private int ballCount;
     private int strikeCount;
 
+    // package-private
     Hint() {
         ballCount = 0;
         strikeCount = 0;
@@ -29,17 +30,19 @@ public class Hint {
             return "낫싱";
         }
 
-        String hintToStirng = "";
+        StringBuilder hintStringBuilder = new StringBuilder();
 
         if (ballCount != 0) {
-            hintToStirng += ballCount + "볼 ";
+            hintStringBuilder.append(ballCount)
+                .append("볼 ");
         }
 
         if (strikeCount != 0) {
-            hintToStirng += strikeCount + "스트라이크";
+            hintStringBuilder.append(strikeCount)
+                .append("스트라이크");
         }
 
-        return hintToStirng;
+        return hintStringBuilder.toString();
     }
 
 }
