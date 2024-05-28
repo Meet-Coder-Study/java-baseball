@@ -2,14 +2,16 @@ package sehee.answer;
 
 import static sehee.util.constant.RandomNumberGameConstant.ANSWER_LENGTH;
 
+import sehee.util.numbermaker.NumberMaker;
+
 public record AnswerFactory(
     NumberMaker numberMaker
 ) {
 
     public Answer make() {
-        int[] randomNumbers = numberMaker.makeAllUniqueRandom(ANSWER_LENGTH);
+        int[] numbers = numberMaker.makeAllUnique(ANSWER_LENGTH);
 
-        return new Answer(randomNumbers);
+        return new Answer(numbers);
     }
 
     public Answer make(int[] userInputs) {
