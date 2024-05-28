@@ -1,6 +1,6 @@
 package sehee.answer;
 
-import static sehee.util.constant.RandomNumberGameConstant.ANSWER_LENGTH;
+import static sehee.util.constant.NumberBaseballGameConstant.ANSWER_LENGTH;
 
 public class Answer {
 

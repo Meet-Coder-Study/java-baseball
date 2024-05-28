@@ -4,7 +4,7 @@ import java.util.Random;
 import sehee.answer.AnswerFactory;
 import sehee.exception.ExceptionHandler;
 import sehee.game.Game;
-import sehee.game.RandomNumberGame;
+import sehee.game.NumberBaseballGame;
 import sehee.game.player.GamePlayer;
 import sehee.io.in.CliReader;
 import sehee.io.in.Reader;
@@ -26,7 +26,7 @@ public class GameContainer {
         // Set Game
         NumberMaker numberMaker = new RandomNumberMaker(new Random());
         AnswerFactory answerFactory = new AnswerFactory(numberMaker);
-        Game game = new RandomNumberGame(reader, printer, answerFactory, exceptionHandler);
+        Game game = new NumberBaseballGame(reader, printer, answerFactory, exceptionHandler);
 
         // Play Game!
         GamePlayer gamePlayer = new GamePlayer(reader, printer, game, exceptionHandler);
