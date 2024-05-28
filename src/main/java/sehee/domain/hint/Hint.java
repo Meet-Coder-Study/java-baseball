@@ -1,9 +1,23 @@
 package sehee.domain.hint;
 
-public record Hint(
-    int strikeCount,
-    int ballCount
-) {
+public class Hint {
+
+    private int ballCount;
+    private int strikeCount;
+
+    Hint() {
+        ballCount = 0;
+        strikeCount = 0;
+    }
+
+    // package-private
+    void increaseBallCount() {
+        this.ballCount++;
+    }
+
+    void increaseStrikeCount() {
+        this.strikeCount++;
+    }
 
     public boolean isThreeStrike() {
         return strikeCount == 3;
