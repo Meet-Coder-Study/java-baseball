@@ -64,7 +64,7 @@ public class RandomNumberGame implements Game {
     }
 
     private Answer readUserAnswer() throws IOException {
-        printer.print("숫자를 입력해주세요:");
+        printer.print("숫자를 입력해주세요: ");
         int[] userInputs = reader.readNumbers();
 
         return answerFactory.make(userInputs);
@@ -76,7 +76,6 @@ public class RandomNumberGame implements Game {
 
         return answer;
     }
-
 
     private void gameOver() {
         printer.println("-------게임 종료-------");
