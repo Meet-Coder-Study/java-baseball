@@ -14,7 +14,7 @@ public class Answer {
     public Hint match(Answer otherAnswer) {
         Hint hint = new Hint();
         for (int i = 0; i < ANSWER_LENGTH; i++) {
-            matchInAnswer(i, otherAnswer, hint);
+            this.matchInAnswer(i, otherAnswer, hint);
         }
 
         return hint;
@@ -22,13 +22,13 @@ public class Answer {
 
     private void matchInAnswer(int index, Answer otherAnswer, Hint hint) {
         for (int j = 0; j < ANSWER_LENGTH; j++) {
-            matchNumberWithIndex(index, otherAnswer.numbers[j], j, hint);
+            this.matchNumberWithIndex(index, otherAnswer.numbers[j], j, hint);
         }
     }
 
-    private void matchNumberWithIndex(int index, int otherAnswerNumber, int otherAnswerIndex, Hint hint) {
-        if (this.numbers[index] == otherAnswerNumber) {
-            if (index == otherAnswerIndex) {
+    private void matchNumberWithIndex(int index, int otherNumber, int otherIndex, Hint hint) {
+        if (this.numbers[index] == otherNumber) {
+            if (index == otherIndex) {
                 hint.increaseStrikeCount();
                 return;
             }
