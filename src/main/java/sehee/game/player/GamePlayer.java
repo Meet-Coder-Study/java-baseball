@@ -1,5 +1,8 @@
 package sehee.game.player;
 
+import static sehee.util.constant.RandomNumberGameConstant.END_NUMBER;
+import static sehee.util.constant.RandomNumberGameConstant.START_NUMBER;
+
 import java.io.IOException;
 import sehee.exception.ExceptionHandler;
 import sehee.game.Game;
@@ -12,9 +15,6 @@ public record GamePlayer(
     Game game,
     ExceptionHandler exceptionHandler
 ) {
-
-    private static final int START_NUMBER = 1;
-    private static final int END_NUMBER = 9;
 
     public void on() {
         boolean working = true;
