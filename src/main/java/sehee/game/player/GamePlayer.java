@@ -1,7 +1,8 @@
-package sehee.game;
+package sehee.game.player;
 
 import java.io.IOException;
 import sehee.exception.ExceptionHandler;
+import sehee.game.Game;
 import sehee.io.in.Reader;
 import sehee.io.out.Printer;
 
