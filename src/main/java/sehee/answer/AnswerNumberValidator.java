@@ -1,16 +1,20 @@
 package sehee.answer;
 
+import static sehee.util.constant.NumberBaseballGameConstant.ANSWER_LENGTH;
+import static sehee.util.constant.NumberBaseballGameMessage.ANSWER_LENGTH_EXCEPTION_MESSAGE;
+import static sehee.util.constant.NumberBaseballGameMessage.DUPLICATED_EXCEPTION_MESSAGE;
+
 // package-private
 final class AnswerNumberValidator {
 
-    static void check(int[] numbers, int length) {
-        checkLength(numbers, length);
+    static void check(int[] numbers) {
+        checkLength(numbers);
         checkAllUnique(numbers);
     }
 
-    private static void checkLength(int[] numbers, int length) {
-        if (numbers.length != length) {
-            throw new IllegalArgumentException(length + "자의 숫자로 입력해주세요.");
+    private static void checkLength(int[] numbers) {
+        if (numbers.length != ANSWER_LENGTH) {
+            throw new IllegalArgumentException(ANSWER_LENGTH_EXCEPTION_MESSAGE);
         }
     }
 
@@ -24,7 +28,7 @@ final class AnswerNumberValidator {
 
     private static void checkUnique(int number, boolean[] isExist) {
         if (isExist[number]) {
-            throw new IllegalArgumentException("1~9 사이의 모두 다른 숫자여야합니다.");
+            throw new IllegalArgumentException(DUPLICATED_EXCEPTION_MESSAGE);
         }
 
         isExist[number] = true;
