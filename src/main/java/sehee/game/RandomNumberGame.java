@@ -1,10 +1,9 @@
 package sehee.game;
 
 import java.io.IOException;
-import sehee.domain.answer.Answer;
-import sehee.domain.answer.AnswerFactory;
-import sehee.domain.hint.Hint;
-import sehee.domain.hint.HintMaker;
+import sehee.domain.Answer;
+import sehee.domain.AnswerFactory;
+import sehee.domain.Hint;
 import sehee.io.in.Reader;
 import sehee.io.out.Printer;
 
@@ -13,18 +12,15 @@ public class RandomNumberGame implements Game {
     private final Reader reader;
     private final Printer printer;
     private final AnswerFactory answerFactory;
-    private final HintMaker hintMaker;
 
     public RandomNumberGame(
         Reader reader,
         Printer printer,
-        AnswerFactory answerFactory,
-        HintMaker hintMaker
+        AnswerFactory answerFactory
     ) {
         this.reader = reader;
         this.printer = printer;
         this.answerFactory = answerFactory;
-        this.hintMaker = hintMaker;
     }
 
     @Override
@@ -32,16 +28,16 @@ public class RandomNumberGame implements Game {
         Answer answer = setComputerAnswer();
         boolean playing = true;
         while (playing) {
-            playing = isPlaying(answer);
+            playing = checkPlaying(answer);
         }
 
         gameOver();
     }
 
-    private boolean isPlaying(Answer answer) throws IOException {
+    private boolean checkPlaying(Answer answer) throws IOException {
         try {
             Answer userAnswer = readUserAnswer();
-            Hint hint = hintMaker.make(answer, userAnswer);
+            Hint hint = answer.match(userAnswer);
             printer.println(hint);
 
             return !checkThreeStrike(hint);
@@ -53,24 +49,25 @@ public class RandomNumberGame implements Game {
     }
 
     private boolean checkThreeStrike(Hint hint) {
-        if (hint.isThreeStrike()) {
-            printer.println("3개의 숫자를 모두 맞히셨습니다.");
-
-            return true;
+        if (!hint.isThreeStrike()) {
+            return false;
         }
 
-        return false;
+        printer.println("3개의 숫자를 모두 맞히셨습니다.");
+
+        return true;
+
     }
 
     private Answer readUserAnswer() throws IOException {
         printer.print("숫자를 입력해주세요:");
         int[] userInputs = reader.readNumbers();
 
-        return answerFactory.makeUserAnswer(userInputs);
+        return answerFactory.make(userInputs);
     }
 
     private Answer setComputerAnswer() {
-        Answer answer = answerFactory.makeRandomAnswer();
+        Answer answer = answerFactory.make();
         printer.println("컴퓨터가 숫자를 뽑았습니다.");
 
         return answer;
