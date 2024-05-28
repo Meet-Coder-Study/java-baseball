@@ -1,7 +1,5 @@
 package sehee.answer;
 
-import static sehee.util.constant.RandomNumberGameConstant.ANSWER_LENGTH;
-
 import sehee.util.numbermaker.NumberMaker;
 
 public record AnswerFactory(
@@ -9,13 +7,13 @@ public record AnswerFactory(
 ) {
 
     public Answer make() {
-        int[] numbers = numberMaker.makeAllUnique(ANSWER_LENGTH);
+        int[] numbers = numberMaker.makeAllUnique();
 
         return new Answer(numbers);
     }
 
     public Answer make(int[] numbers) {
-        AnswerNumberValidator.check(numbers, ANSWER_LENGTH);
+        AnswerNumberValidator.check(numbers);
 
         return new Answer(numbers);
     }
