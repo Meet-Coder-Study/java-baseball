@@ -20,7 +20,7 @@ public class Main {
         Reader reader = new CliReader();
         Printer printer = new CliPrinter();
 
-        // Game
+        // Set Game
         NumberMaker numberMaker = new NumberMaker(new Random());
         AnswerFactory answerFactory = new AnswerFactory(numberMaker);
         HintMaker hintProvider = new HintMaker();
@@ -29,7 +29,7 @@ public class Main {
         // Exception
         ExceptionHandler exceptionHandler = new ExceptionHandler(printer);
 
-        // Play Game
+        // Play Game!
         GamePlayer gamePlayer = new GamePlayer(reader, printer, game, exceptionHandler);
         gamePlayer.on();
     }
