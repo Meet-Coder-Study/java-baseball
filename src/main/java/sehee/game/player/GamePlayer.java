@@ -12,12 +12,19 @@ import sehee.game.Game;
 import sehee.io.in.Reader;
 import sehee.io.out.Printer;
 
-public record GamePlayer(
-    Reader reader,
-    Printer printer,
-    Game game,
-    ExceptionHandler exceptionHandler
-) {
+public class GamePlayer {
+
+    private final Reader reader;
+    private final Printer printer;
+    private final Game game;
+    private final ExceptionHandler exceptionHandler;
+
+    public GamePlayer(Reader reader, Printer printer, Game game, ExceptionHandler exceptionHandler) {
+        this.reader = reader;
+        this.printer = printer;
+        this.game = game;
+        this.exceptionHandler = exceptionHandler;
+    }
 
     public void on() {
         boolean working = true;

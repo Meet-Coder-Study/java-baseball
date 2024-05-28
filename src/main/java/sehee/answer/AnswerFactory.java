@@ -2,9 +2,13 @@ package sehee.answer;
 
 import sehee.util.numbermaker.NumberMaker;
 
-public record AnswerFactory(
-    NumberMaker numberMaker
-) {
+public class AnswerFactory {
+
+    private final NumberMaker numberMaker;
+
+    public AnswerFactory(NumberMaker numberMaker) {
+        this.numberMaker = numberMaker;
+    }
 
     public Answer make() {
         int[] numbers = numberMaker.makeAllUnique();
