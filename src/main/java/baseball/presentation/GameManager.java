@@ -19,10 +19,20 @@ public class GameManager {
         this.messagePrinter = messagePrinter;
     }
 
-    public int init() {
-        messagePrinter.initMessage();
-        int input = scanner.nextInt();
-        return input;
+    public GameStatus init() {
+        GameStatus gameStatus;
+        do {
+            try {
+                messagePrinter.initMessage();
+                String input = String.valueOf(scanner.nextInt());
+                gameStatus = GameStatus.find(input);
+                break;
+            } catch (Exception e) {
+                messagePrinter.errorMessage(e.getMessage());
+            }
+        } while (true);
+
+        return gameStatus;
     }
 
     public List<Integer> getUserDigits() {

@@ -3,6 +3,7 @@ package baseball;
 import baseball.domain.Computer;
 import baseball.presentation.GameManager;
 import baseball.domain.Referee;
+import baseball.presentation.GameStatus;
 import baseball.presentation.MessagePrinter;
 
 import java.util.List;
@@ -17,12 +18,12 @@ public class BaseballGame {
 
         boolean isApplicationOver = false;
         while (!isApplicationOver) {
-            int userCommand = gameManager.init();
+            GameStatus gameStatus = gameManager.init();
 
-            if (userCommand == 1) {
+            if (gameStatus.equals(GameStatus.START)) {
                 List<Integer> computerDigits = gameManager.getComputerDigits(computer);
                 referee.keepComputerDigits(computerDigits);
-            } else if (userCommand == 9) {
+            } else if (gameStatus.equals(GameStatus.QUIT)) {
                 gameManager.applicationOver();
             }
 
