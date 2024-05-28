@@ -26,7 +26,7 @@ public record GamePlayer(
 
     private boolean checkWorkingAndPlayGame() {
         try {
-            if (stopGame()) {
+            if (checkStopGame()) {
                 return false;
             }
 
@@ -38,7 +38,7 @@ public record GamePlayer(
         return true;
     }
 
-    private boolean stopGame() throws IOException {
+    private boolean checkStopGame() throws IOException {
         printer.println("게임을 새로 시작하려면 " + START_NUMBER + ", 종료하려면 " + END_NUMBER + "를 입력하세요.");
 
         int flag = reader.readOneNumber();
