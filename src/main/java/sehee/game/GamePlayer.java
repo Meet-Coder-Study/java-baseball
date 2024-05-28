@@ -18,12 +18,12 @@ public record GamePlayer(
     public void on() {
         boolean working = true;
         while (working) {
-            working = checkPlayingAndPlayGame();
+            working = checkWorkingAndPlayGame();
         }
         printer.println("애플리케이션이 종료되었습니다.");
     }
 
-    private boolean checkPlayingAndPlayGame() {
+    private boolean checkWorkingAndPlayGame() {
         try {
             if (stopGame()) {
                 return false;
