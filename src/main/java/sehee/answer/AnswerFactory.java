@@ -14,11 +14,10 @@ public record AnswerFactory(
         return new Answer(numbers);
     }
 
-    public Answer make(int[] userInputs) {
-        Validator.checkLength(userInputs);
-        Validator.checkAllDuplicated(userInputs);
+    public Answer make(int[] numbers) {
+        AnswerNumberValidator.check(numbers, ANSWER_LENGTH);
 
-        return new Answer(userInputs);
+        return new Answer(numbers);
     }
 
 }
