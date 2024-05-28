@@ -1,9 +1,9 @@
 package sehee.game;
 
 import java.io.IOException;
-import sehee.domain.Answer;
-import sehee.domain.AnswerFactory;
-import sehee.domain.Hint;
+import sehee.answer.Answer;
+import sehee.answer.AnswerFactory;
+import sehee.answer.Hint;
 import sehee.exception.ExceptionHandler;
 import sehee.io.in.Reader;
 import sehee.io.out.Printer;

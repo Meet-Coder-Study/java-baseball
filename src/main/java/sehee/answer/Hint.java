@@ -1,4 +1,4 @@
-package sehee.domain;
+package sehee.answer;
 
 public class Hint {
 

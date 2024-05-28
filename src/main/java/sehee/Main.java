@@ -1,7 +1,7 @@
 package sehee;
 
 import java.util.Random;
-import sehee.domain.AnswerFactory;
+import sehee.answer.AnswerFactory;
 import sehee.exception.ExceptionHandler;
 import sehee.game.Game;
 import sehee.game.GamePlayer;
@@ -10,7 +10,7 @@ import sehee.io.in.CliReader;
 import sehee.io.in.Reader;
 import sehee.io.out.CliPrinter;
 import sehee.io.out.Printer;
-import sehee.util.NumberMaker;
+import sehee.answer.NumberMaker;
 
 public class Main {
 
