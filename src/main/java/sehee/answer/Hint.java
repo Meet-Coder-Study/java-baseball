@@ -1,5 +1,9 @@
 package sehee.answer;
 
+import static sehee.util.constant.NumberBaseballGameConstant.BALL;
+import static sehee.util.constant.NumberBaseballGameConstant.NOTHING;
+import static sehee.util.constant.NumberBaseballGameConstant.STRIKE;
+
 public class Hint {
 
     private int ballCount;
@@ -14,19 +18,23 @@ public class Hint {
     @Override
     public String toString() {
         if (ballCount == 0 && strikeCount == 0) {
-            return "낫싱";
+            return NOTHING;
         }
 
         StringBuilder hintStringBuilder = new StringBuilder();
 
         if (ballCount != 0) {
             hintStringBuilder.append(ballCount)
-                .append("볼 ");
+                .append(BALL);
         }
 
         if (strikeCount != 0) {
+            if (ballCount != 0) {
+                hintStringBuilder.append(" ");
+            }
+
             hintStringBuilder.append(strikeCount)
-                .append("스트라이크");
+                .append(STRIKE);
         }
 
         return hintStringBuilder.toString();
