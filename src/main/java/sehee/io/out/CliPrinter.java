@@ -13,18 +13,8 @@ public class CliPrinter implements Printer {
     }
 
     @Override
-    public void print(Integer message) {
-        cliPrinter.print(message);
-    }
-
-    @Override
     public void print(String message) {
         cliPrinter.print(message);
-    }
-
-    @Override
-    public void println(Integer message) {
-        cliPrinter.print(message + LINE_SEPARATOR);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package sehee.stub;
+package sehee.testutil.stub;
 
 import sehee.io.out.Printer;
 
@@ -11,18 +11,8 @@ public class PrinterStub implements Printer {
     }
 
     @Override
-    public void print(Integer message) {
-        latestMessage = String.valueOf(message);
-    }
-
-    @Override
     public void print(String message) {
         latestMessage = message;
-    }
-
-    @Override
-    public void println(Integer message) {
-        latestMessage = String.valueOf(message);
     }
 
     @Override
