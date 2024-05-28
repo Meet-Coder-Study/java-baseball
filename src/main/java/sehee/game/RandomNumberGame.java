@@ -4,6 +4,7 @@ import java.io.IOException;
 import sehee.domain.Answer;
 import sehee.domain.AnswerFactory;
 import sehee.domain.Hint;
+import sehee.exception.ExceptionHandler;
 import sehee.io.in.Reader;
 import sehee.io.out.Printer;
 
@@ -12,15 +13,18 @@ public class RandomNumberGame implements Game {
     private final Reader reader;
     private final Printer printer;
     private final AnswerFactory answerFactory;
+    private final ExceptionHandler exceptionHandler;
 
     public RandomNumberGame(
         Reader reader,
         Printer printer,
-        AnswerFactory answerFactory
+        AnswerFactory answerFactory,
+        ExceptionHandler exceptionHandler
     ) {
         this.reader = reader;
         this.printer = printer;
         this.answerFactory = answerFactory;
+        this.exceptionHandler = exceptionHandler;
     }
 
     @Override
@@ -42,7 +46,7 @@ public class RandomNumberGame implements Game {
 
             return !checkThreeStrike(hint);
         } catch (IllegalArgumentException e) {
-            printer.println("숫자 입력값이 올바르지 않아 진행할 수 없습니다.");
+            exceptionHandler.alert(e);
 
             return true;
         }

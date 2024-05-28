@@ -19,13 +19,13 @@ public class Main {
         Reader reader = new CliReader();
         Printer printer = new CliPrinter();
 
+        // Exception
+        ExceptionHandler exceptionHandler = new ExceptionHandler(printer);
+
         // Set Game
         NumberMaker numberMaker = new NumberMaker(new Random());
         AnswerFactory answerFactory = new AnswerFactory(numberMaker);
-        Game game = new RandomNumberGame(reader, printer, answerFactory);
-
-        // Exception
-        ExceptionHandler exceptionHandler = new ExceptionHandler(printer);
+        Game game = new RandomNumberGame(reader, printer, answerFactory, exceptionHandler);
 
         // Play Game!
         GamePlayer gamePlayer = new GamePlayer(reader, printer, game, exceptionHandler);
