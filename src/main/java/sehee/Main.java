@@ -1,8 +1,7 @@
 package sehee;
 
 import java.util.Random;
-import sehee.domain.answer.AnswerFactory;
-import sehee.domain.hint.HintMaker;
+import sehee.domain.AnswerFactory;
 import sehee.exception.ExceptionHandler;
 import sehee.game.Game;
 import sehee.game.GamePlayer;
@@ -23,8 +22,7 @@ public class Main {
         // Set Game
         NumberMaker numberMaker = new NumberMaker(new Random());
         AnswerFactory answerFactory = new AnswerFactory(numberMaker);
-        HintMaker hintProvider = new HintMaker();
-        Game game = new RandomNumberGame(reader, printer, answerFactory, hintProvider);
+        Game game = new RandomNumberGame(reader, printer, answerFactory);
 
         // Exception
         ExceptionHandler exceptionHandler = new ExceptionHandler(printer);
