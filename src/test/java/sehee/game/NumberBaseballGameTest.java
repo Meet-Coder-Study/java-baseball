@@ -10,9 +10,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import sehee.answer.AnswerFactory;
 import sehee.exception.ExceptionHandler;
-import sehee.stub.NumberMakerStub;
-import sehee.stub.PrinterStub;
-import sehee.stub.ReaderStub;
+import sehee.testutil.stub.NumberMakerStub;
+import sehee.testutil.stub.PrinterStub;
+import sehee.testutil.stub.ReaderStub;
 
 class NumberBaseballGameTest {
 

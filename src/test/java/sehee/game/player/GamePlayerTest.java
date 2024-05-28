@@ -10,9 +10,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import sehee.exception.ExceptionHandler;
-import sehee.stub.GameStub;
-import sehee.stub.PrinterStub;
-import sehee.stub.ReaderStub;
+import sehee.testutil.stub.GameStub;
+import sehee.testutil.stub.PrinterStub;
+import sehee.testutil.stub.ReaderStub;
 
 class GamePlayerTest {
 

@@ -1,4 +1,4 @@
-package sehee.stub;
+package sehee.testutil.stub;
 
 import sehee.game.Game;
 
