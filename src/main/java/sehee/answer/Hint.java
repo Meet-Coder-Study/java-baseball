@@ -11,19 +11,6 @@ public class Hint {
         strikeCount = 0;
     }
 
-    // package-private
-    void increaseBallCount() {
-        this.ballCount++;
-    }
-
-    void increaseStrikeCount() {
-        this.strikeCount++;
-    }
-
-    public boolean isThreeStrike() {
-        return strikeCount == 3;
-    }
-
     @Override
     public String toString() {
         if (ballCount == 0 && strikeCount == 0) {
@@ -43,6 +30,18 @@ public class Hint {
         }
 
         return hintStringBuilder.toString();
+    }
+
+    public boolean isThreeStrike() {
+        return strikeCount == 3;
+    }
+
+    void increaseBallCount() {
+        this.ballCount++;
+    }
+
+    void increaseStrikeCount() {
+        this.strikeCount++;
     }
 
 }
