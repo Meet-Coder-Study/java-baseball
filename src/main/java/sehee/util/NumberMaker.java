@@ -6,7 +6,7 @@ public record NumberMaker(
     Random random
 ) {
 
-    public int makeOneRandomNumber() {
+    public int makeRandomOne() {
         return random.nextInt(9) + 1;
     }
 
