@@ -1,4 +1,4 @@
-package baseball.exception;
+package baseball.common.exception;
 
 public class InvalidGameStatusException extends Exception{
 
