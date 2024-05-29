@@ -11,8 +11,8 @@ public class Referee {
     private static final int INIT_COUNT = 0;
     private static final int OUT_COUNT = 3;
 
-    private int ball = INIT_COUNT;
-    private int strike = INIT_COUNT;
+    private int ballCount = INIT_COUNT;
+    private int strikeCount = INIT_COUNT;
     private List<Integer> computerDigits;
 
     public void keepComputerDigits(List<Integer> computerDigits) {
@@ -35,8 +35,8 @@ public class Referee {
     }
 
     private void resetCounts() {
-        ball = INIT_COUNT;
-        strike = INIT_COUNT;
+        ballCount = INIT_COUNT;
+        strikeCount = INIT_COUNT;
     }
 
     private void compareDigits(List<Integer> userDigits) {
@@ -49,26 +49,26 @@ public class Referee {
         Integer userDigit = userDigits.get(index);
         Integer computerDigit = computerDigits.get(index);
         if (userDigit.equals(computerDigit)) {
-            strike++;
+            strikeCount++;
         } else if (computerDigits.contains(userDigit)) {
-            ball++;
+            ballCount++;
         }
     }
 
     private boolean isOut() {
-        return strike == OUT_COUNT;
+        return strikeCount == OUT_COUNT;
     }
 
     private String generateCallMessage() {
         StringBuilder call = new StringBuilder();
-        if (ball != INIT_COUNT) {
-            call.append(ball)
+        if (ballCount != INIT_COUNT) {
+            call.append(ballCount)
                     .append(BALL_CALL)
                     .append(SPACE_CHARACTER);
         }
 
-        if (strike != INIT_COUNT) {
-            call.append(strike)
+        if (strikeCount != INIT_COUNT) {
+            call.append(strikeCount)
                     .append(STRIKE_CALL);
         }
 
