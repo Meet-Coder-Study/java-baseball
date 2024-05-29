@@ -5,6 +5,9 @@ import java.util.List;
 
 public class converter {
 
+    /**
+     *  int를 맨 앞 자리부터 하나씩 리스트로 변환
+     */
     public static List<Integer> intToDigits(int number) {
         List<Integer> digits = new ArrayList<>();
         while (number > 0) {
