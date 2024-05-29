@@ -3,6 +3,7 @@ package baseball.presentation;
 import baseball.domain.Computer;
 import baseball.common.exception.InvalidLengthException;
 import baseball.common.exception.InvalidNumberException;
+import baseball.presentation.input.InputProvider;
 
 import java.util.*;
 
@@ -12,12 +13,13 @@ import static baseball.common.utils.converter.intToDigits;
 public class GameManager {
 
     private static final int USER_DIGITS_SIZE = 3;
-    private static final Scanner scanner = new Scanner(System.in);
 
     private final MessagePrinter messagePrinter;
+    private final InputProvider inputProvider;
 
-    public GameManager(MessagePrinter messagePrinter) {
+    public GameManager(MessagePrinter messagePrinter, InputProvider inputProvider) {
         this.messagePrinter = messagePrinter;
+        this.inputProvider = inputProvider;
     }
 
     public GameStatus init() {
@@ -25,7 +27,7 @@ public class GameManager {
         do {
             try {
                 messagePrinter.initMessage();
-                String input = String.valueOf(scanner.nextInt());
+                String input = inputProvider.getInput();
                 gameStatus = GameStatus.find(input);
                 break;
             } catch (Exception e) {
@@ -41,7 +43,8 @@ public class GameManager {
         do {
             try {
                 messagePrinter.inputNumberMessage();
-                int userNumber = scanner.nextInt();
+                String input = inputProvider.getInput();
+                int userNumber = Integer.parseInt(input);
                 userDigits = intToDigits(userNumber);
 
                 validateLength(userDigits);
@@ -50,7 +53,6 @@ public class GameManager {
                 break;
             } catch (Exception e) {
                 messagePrinter.errorMessage(e.getMessage());
-                scanner.nextLine();
             }
         } while (true);
         return userDigits;

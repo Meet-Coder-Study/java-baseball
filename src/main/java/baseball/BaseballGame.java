@@ -5,14 +5,18 @@ import baseball.presentation.GameManager;
 import baseball.domain.Referee;
 import baseball.presentation.GameStatus;
 import baseball.presentation.MessagePrinter;
+import baseball.presentation.input.Input;
+import baseball.presentation.input.InputProvider;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class BaseballGame {
 
     private static final Computer computer = new Computer();
     private static final Referee referee = new Referee();
-    private static final GameManager gameManager = new GameManager(new MessagePrinter());
+    private static final InputProvider inputProvider = new Input(new Scanner(System.in));
+    private static final GameManager gameManager = new GameManager(new MessagePrinter(), inputProvider);
 
     public static void launch() {
 
