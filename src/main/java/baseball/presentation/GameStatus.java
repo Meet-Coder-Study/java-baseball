@@ -1,6 +1,6 @@
 package baseball.presentation;
 
-import baseball.exception.InvalidGameStatusException;
+import baseball.common.exception.InvalidGameStatusException;
 
 import java.util.Collections;
 import java.util.Map;

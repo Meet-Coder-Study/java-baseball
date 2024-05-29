@@ -1,12 +1,13 @@
 package baseball.presentation;
 
 import baseball.domain.Computer;
-import baseball.exception.InvalidLengthException;
-import baseball.exception.InvalidNumberException;
+import baseball.common.exception.InvalidLengthException;
+import baseball.common.exception.InvalidNumberException;
 
 import java.util.*;
 
-import static baseball.utils.converter.converter.intToDigits;
+import static baseball.common.utils.converter.intToDigits;
+
 
 public class GameManager {
 
