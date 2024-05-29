@@ -49,6 +49,7 @@ public class GameManager {
                 break;
             } catch (Exception e) {
                 messagePrinter.errorMessage(e.getMessage());
+                scanner.nextLine();
             }
         } while (true);
         return userDigits;
