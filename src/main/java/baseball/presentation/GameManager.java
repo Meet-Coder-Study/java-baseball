@@ -77,14 +77,14 @@ public class GameManager {
 
     private void validateLength(List<Integer> digits) throws InvalidLengthException {
         if (digits.size() != USER_DIGITS_SIZE) {
-            throw new InvalidLengthException("3자리 숫자만 가능합니다.");
+            throw new InvalidLengthException(USER_DIGITS_SIZE);
         }
     }
 
     private void validateDuplication(List<Integer> digits) throws InvalidNumberException {
         Set<Integer> digitSet = new HashSet<>(digits);
         if (digitSet.size() != USER_DIGITS_SIZE) {
-            throw new InvalidNumberException("서로 다른 숫자만 가능합니다.");
+            throw new InvalidNumberException();
         }
     }
 }

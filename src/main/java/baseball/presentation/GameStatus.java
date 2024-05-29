@@ -29,7 +29,7 @@ public enum GameStatus {
 
     public static GameStatus find(String description) throws InvalidGameStatusException {
         return Optional.ofNullable(descriptions.get(description)).orElseThrow(
-                () -> new InvalidGameStatusException("1(시작) 또는 9(종료)를 눌러주세요.")
+                () -> new InvalidGameStatusException()
         );
     }
 }
