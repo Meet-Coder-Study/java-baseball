@@ -1,0 +1,25 @@
+{
+    "name": "ts-baseball",
+    "version": "1.0.0",
+    "description": "숫자 야구 프로그램",
+    "main": "index.js",
+    "scripts": {
+        "clean": "npx rimraf dist",
+        "build": "npm run clean && npx tsc",
+        "start": "npm run build && node ./dist/main.js",
+        "test": "npm run build && jest"
+    },
+    "author": "Anna Cho",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/jest": "^29.5.13",
+        "jest": "^29.7.0",
+        "rimraf": "^6.0.1",
+        "ts-jest": "^29.2.5",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.6.2"
+    },
+    "dependencies": {
+        "node": "^22.9.0"
+    }
+}
