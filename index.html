@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>⚾️ 숫자 야구 게임</title>
+  </head>
+ <div>
+    <p role="alert"> 게임을 새로 시작하려면 1, 기록을 보려면 2, 통계를 보려면 3, 종료하려면 9를 입력하세요.
+    </p>
+    <form id="numform">
+        <label for="userInput">숫자를 입력해주세요</label>
+        <input type="text" id="userInput" placeholder='숫자를 입력해주세요'/>
+        <button type="submit" >입력</button>
+    </form>
+    <div id="result" style="display:flex; flex-direction: column; white-space: break-spaces;">
+     </div>
+ </div>
+ <script type="module" src="./dist/bundle.js"></script>
+</body>
+</html>
